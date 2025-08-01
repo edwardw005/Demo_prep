@@ -1,0 +1,1502 @@
+QuestaSim-64 qrun 2024.3_1 Utility 2024.10 Oct 17 2024
+Start time: 07:37:16 on Aug 01,2025
+qrun -batch -access=rw+/. -timescale 1ns/1ns -mfcu design.sv testbench.sv -voptargs="+acc=npr" -do " run -all; exit" 
+Creating library 'qrun.out/work'.
+QuestaSim-64 vlog 2024.3_1 Compiler 2024.10 Oct 17 2024
+Start time: 07:37:16 on Aug 01,2025
+vlog -timescale 1ns/1ns -mfcu design.sv testbench.sv -work qrun.out/work -statslog qrun.out/stats_log -writesessionid "+qrun.out/top_dus" -csession=incr 
+-- Compiling module data_mem
+-- Compiling module TopLevel0
+-- Compiling module ALU
+-- Compiling module CTRL
+-- Compiling module InstROM
+-- Compiling module LUT
+-- Compiling module ProgCtrl
+-- Compiling module RegFile
+-- Compiling module TopLevel
+-- Compiling module flt2fix_tb_noround
+
+Top level modules:
+	flt2fix_tb_noround
+End time: 07:37:16 on Aug 01,2025, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+QuestaSim-64 vopt 2024.3_1 Compiler 2024.10 Oct 17 2024
+** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
+Start time: 07:37:16 on Aug 01,2025
+vopt -access=rw+/. -timescale 1ns/1ns -mfcu "+acc=npr" -findtoplevels qrun.out/work+1+ -work qrun.out/work -statslog qrun.out/stats_log -csession=incr -o qrun_opt -csessionid=2 
+
+Top level modules:
+	flt2fix_tb_noround
+
+Analyzing design...
+-- Loading module flt2fix_tb_noround
+-- Loading module TopLevel0
+-- Loading module data_mem
+-- Loading module TopLevel
+-- Loading module ProgCtrl
+-- Loading module InstROM
+-- Loading module CTRL
+-- Loading module RegFile
+-- Loading module ALU
+-- Loading module LUT
+Optimizing 10 design-units (inlining 0/11 module instances):
+-- Optimizing module flt2fix_tb_noround(fast)
+-- Optimizing module TopLevel(fast)
+-- Optimizing module TopLevel0(fast)
+-- Optimizing module InstROM(fast)
+-- Optimizing module CTRL(fast)
+-- Optimizing module RegFile(fast)
+-- Optimizing module data_mem(fast)
+-- Optimizing module ProgCtrl(fast)
+-- Optimizing module ALU(fast)
+-- Optimizing module LUT(fast)
+Optimized design name is qrun_opt
+End time: 07:37:17 on Aug 01,2025, Elapsed time: 0:00:01
+Errors: 0, Warnings: 1
+# vsim -batch -lib qrun.out/work -do " run -all; exit" -statslog qrun.out/stats_log qrun_opt -appendlog -l qrun.log 
+# Start time: 07:37:17 on Aug 01,2025
+# //  Questa Sim-64
+# //  Version 2024.3_1 linux_x86_64 Oct 17 2024
+# //
+# // Unpublished work. Copyright 2024 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# Loading sv_std.std
+# Loading work.flt2fix_tb_noround(fast)
+# Loading work.TopLevel0(fast)
+# Loading work.data_mem(fast)
+# Loading work.TopLevel(fast)
+# Loading work.ProgCtrl(fast)
+# Loading work.InstROM(fast)
+# Loading work.CTRL(fast)
+# Loading work.RegFile(fast)
+# Loading work.ALU(fast)
+# Loading work.LUT(fast)
+# 
+# run -all
+# Instruction = xxxxxxxxx, Opcode = xxx
+# Instruction = 100000100, Opcode = xxx
+# Cycle 0: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 00, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Instruction = 000001000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 00, Mem[6] = xx, Mem[7] = xx
+# Instruction = 100000101, Opcode = xxx
+# Cycle 2: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 00, Mem[6] = xx, Mem[7] = xx
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 3: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 00, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 00, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 02, Next PC = 00000003
+# Cycle 5: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 00, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000010000, Opcode = xxx
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 00, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
+# Instruction = 010011000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
+# Cycle 7: PC = 04, Instruction = 010011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 00, Mem[6] = xx, Mem[7] = xx
+# Instruction = 010000010, Opcode = xxx
+# Cycle 8: PC = 05, Instruction = 010000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 00, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 05, Next PC = 00000006
+# Instruction = 111000000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0a, Current PC = 06, Next PC = 00000007
+# Cycle 9: PC = 06, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 00, Mem[6] = xx, Mem[7] = xx
+# Instruction = 001000010, Opcode = xxx
+# Cycle 10: PC = 07, Instruction = 001000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 00, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 07, Next PC = 00000008
+# Instruction = 010000001, Opcode = xxx
+# 0.000000 * 2**-15 = 0.000000 =          0
+# original binary = 0_00000_0000000000
+# from MAT = 0000000000000000 = 0000
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 08, Next PC = 00000009
+# Cycle 11: PC = 08, Instruction = 010000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 00, Mem[6] = xx, Mem[7] = xx
+# Instruction = 111000001, Opcode = xxx
+# Cycle 12: PC = 09, Instruction = 111000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 00, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 09, Next PC = 0000000a
+# Instruction = 000010001, Opcode = xxx
+# from dum = 0000000000000000 = 0000
+# from DUT = xxxxxxxxxxxxxxxx = xxxx
+#  ct =           1, score0 =           0, score1 =           0
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 0: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3c, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3c, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle 2: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3c, Mem[6] = xx, Mem[7] = xx
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 3: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3c, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3c, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 02, Next PC = 00000003
+# Cycle 5: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3c, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000010000, Opcode = xxx
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3c, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
+# Instruction = 010011000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
+# Cycle 7: PC = 04, Instruction = 010011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3c, Mem[6] = xx, Mem[7] = xx
+# Instruction = 010000010, Opcode = xxx
+# Cycle 8: PC = 05, Instruction = 010000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3c, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 05, Next PC = 00000006
+# Instruction = 111000000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0a, Current PC = 06, Next PC = 00000007
+# Cycle 9: PC = 06, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3c, Mem[6] = xx, Mem[7] = xx
+# Instruction = 001000010, Opcode = xxx
+# Cycle 10: PC = 07, Instruction = 001000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3c, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 07, Next PC = 00000008
+# Instruction = 010000001, Opcode = xxx
+# 1.000000 * 2**  0 = 0.000000 =          1
+# original binary = 0_01111_0000000000
+# from MAT = 0000000100000000 = 0100
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 08, Next PC = 00000009
+# Cycle 11: PC = 08, Instruction = 010000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3c, Mem[6] = xx, Mem[7] = xx
+# Instruction = 111000001, Opcode = xxx
+# Cycle 12: PC = 09, Instruction = 111000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3c, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 09, Next PC = 0000000a
+# Instruction = 000010001, Opcode = xxx
+# from dum = 0000000100000000 = 0100
+# from DUT = xxxxxxxxxxxxxxxx = xxxx
+#  ct =           2, score0 =           0, score1 =           0
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 0: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3e, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3e, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle 2: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3e, Mem[6] = xx, Mem[7] = xx
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 3: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3e, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3e, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 02, Next PC = 00000003
+# Cycle 5: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3e, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000010000, Opcode = xxx
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3e, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
+# Instruction = 010011000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
+# Cycle 7: PC = 04, Instruction = 010011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3e, Mem[6] = xx, Mem[7] = xx
+# Instruction = 010000010, Opcode = xxx
+# Cycle 8: PC = 05, Instruction = 010000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3e, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 05, Next PC = 00000006
+# Instruction = 111000000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0a, Current PC = 06, Next PC = 00000007
+# Cycle 9: PC = 06, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3e, Mem[6] = xx, Mem[7] = xx
+# Instruction = 001000010, Opcode = xxx
+# Cycle 10: PC = 07, Instruction = 001000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3e, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 07, Next PC = 00000008
+# Instruction = 010000001, Opcode = xxx
+# 1.500000 * 2**  0 = 0.000000 =          2
+# original binary = 0_01111_1000000000
+# from MAT = 0000000110000000 = 0180
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 08, Next PC = 00000009
+# Cycle 11: PC = 08, Instruction = 010000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3e, Mem[6] = xx, Mem[7] = xx
+# Instruction = 111000001, Opcode = xxx
+# Cycle 12: PC = 09, Instruction = 111000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3e, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 09, Next PC = 0000000a
+# Instruction = 000010001, Opcode = xxx
+# from dum = 0000000110000000 = 0180
+# from DUT = xxxxxxxxxxxxxxxx = xxxx
+#  ct =           3, score0 =           0, score1 =           0
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 0: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3d, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3d, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle 2: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3d, Mem[6] = xx, Mem[7] = xx
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 3: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3d, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3d, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 02, Next PC = 00000003
+# Cycle 5: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3d, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000010000, Opcode = xxx
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3d, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
+# Instruction = 010011000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
+# Cycle 7: PC = 04, Instruction = 010011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3d, Mem[6] = xx, Mem[7] = xx
+# Instruction = 010000010, Opcode = xxx
+# Cycle 8: PC = 05, Instruction = 010000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3d, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 05, Next PC = 00000006
+# Instruction = 111000000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0a, Current PC = 06, Next PC = 00000007
+# Cycle 9: PC = 06, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3d, Mem[6] = xx, Mem[7] = xx
+# Instruction = 001000010, Opcode = xxx
+# Cycle 10: PC = 07, Instruction = 001000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3d, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 07, Next PC = 00000008
+# Instruction = 010000001, Opcode = xxx
+# 1.250000 * 2**  0 = 0.000000 =          1
+# original binary = 0_01111_0100000000
+# from MAT = 0000000101000000 = 0140
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 08, Next PC = 00000009
+# Cycle 11: PC = 08, Instruction = 010000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3d, Mem[6] = xx, Mem[7] = xx
+# Instruction = 111000001, Opcode = xxx
+# Cycle 12: PC = 09, Instruction = 111000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3d, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 09, Next PC = 0000000a
+# Instruction = 000010001, Opcode = xxx
+# from dum = 0000000101000000 = 0140
+# from DUT = xxxxxxxxxxxxxxxx = xxxx
+#  ct =           4, score0 =           0, score1 =           0
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 0: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3f, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3f, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle 2: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3f, Mem[6] = xx, Mem[7] = xx
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 3: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3f, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3f, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 02, Next PC = 00000003
+# Cycle 5: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3f, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000010000, Opcode = xxx
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3f, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
+# Instruction = 010011000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
+# Cycle 7: PC = 04, Instruction = 010011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3f, Mem[6] = xx, Mem[7] = xx
+# Instruction = 010000010, Opcode = xxx
+# Cycle 8: PC = 05, Instruction = 010000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3f, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 05, Next PC = 00000006
+# Instruction = 111000000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0a, Current PC = 06, Next PC = 00000007
+# Cycle 9: PC = 06, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3f, Mem[6] = xx, Mem[7] = xx
+# Instruction = 001000010, Opcode = xxx
+# Cycle 10: PC = 07, Instruction = 001000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3f, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 07, Next PC = 00000008
+# Instruction = 010000001, Opcode = xxx
+# 1.750000 * 2**  0 = 0.000000 =          2
+# original binary = 0_01111_1100000000
+# from MAT = 0000000111000000 = 01c0
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 08, Next PC = 00000009
+# Cycle 11: PC = 08, Instruction = 010000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3f, Mem[6] = xx, Mem[7] = xx
+# Instruction = 111000001, Opcode = xxx
+# Cycle 12: PC = 09, Instruction = 111000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 3f, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 09, Next PC = 0000000a
+# Instruction = 000010001, Opcode = xxx
+# from dum = 0000000111000000 = 01c0
+# from DUT = xxxxxxxxxxxxxxxx = xxxx
+#  ct =           5, score0 =           0, score1 =           0
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 0: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 40, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 40, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle 2: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 40, Mem[6] = xx, Mem[7] = xx
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 3: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 40, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 40, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 02, Next PC = 00000003
+# Cycle 5: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 40, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000010000, Opcode = xxx
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 40, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
+# Instruction = 010011000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
+# Cycle 7: PC = 04, Instruction = 010011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 40, Mem[6] = xx, Mem[7] = xx
+# Instruction = 010000010, Opcode = xxx
+# Cycle 8: PC = 05, Instruction = 010000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 40, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 05, Next PC = 00000006
+# Instruction = 111000000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0a, Current PC = 06, Next PC = 00000007
+# Cycle 9: PC = 06, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 40, Mem[6] = xx, Mem[7] = xx
+# Instruction = 001000010, Opcode = xxx
+# Cycle 10: PC = 07, Instruction = 001000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 40, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 07, Next PC = 00000008
+# Instruction = 010000001, Opcode = xxx
+# 1.000000 * 2**  1 = 0.000000 =          2
+# original binary = 0_10000_0000000000
+# from MAT = 0000001000000000 = 0200
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 08, Next PC = 00000009
+# Cycle 11: PC = 08, Instruction = 010000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 40, Mem[6] = xx, Mem[7] = xx
+# Instruction = 111000001, Opcode = xxx
+# Cycle 12: PC = 09, Instruction = 111000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 40, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 09, Next PC = 0000000a
+# Instruction = 000010001, Opcode = xxx
+# from dum = 0000001000000000 = 0200
+# from DUT = xxxxxxxxxxxxxxxx = xxxx
+#  ct =           6, score0 =           0, score1 =           0
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 0: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 42, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 42, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle 2: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 42, Mem[6] = xx, Mem[7] = xx
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 3: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 42, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 42, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 02, Next PC = 00000003
+# Cycle 5: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 42, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000010000, Opcode = xxx
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 42, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
+# Instruction = 010011000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
+# Cycle 7: PC = 04, Instruction = 010011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 42, Mem[6] = xx, Mem[7] = xx
+# Instruction = 010000010, Opcode = xxx
+# Cycle 8: PC = 05, Instruction = 010000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 42, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 05, Next PC = 00000006
+# Instruction = 111000000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0a, Current PC = 06, Next PC = 00000007
+# Cycle 9: PC = 06, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 42, Mem[6] = xx, Mem[7] = xx
+# Instruction = 001000010, Opcode = xxx
+# Cycle 10: PC = 07, Instruction = 001000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 42, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 07, Next PC = 00000008
+# Instruction = 010000001, Opcode = xxx
+# 1.500000 * 2**  1 = 0.000000 =          3
+# original binary = 0_10000_1000000000
+# from MAT = 0000001100000000 = 0300
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 08, Next PC = 00000009
+# Cycle 11: PC = 08, Instruction = 010000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 42, Mem[6] = xx, Mem[7] = xx
+# Instruction = 111000001, Opcode = xxx
+# Cycle 12: PC = 09, Instruction = 111000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 42, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 09, Next PC = 0000000a
+# Instruction = 000010001, Opcode = xxx
+# from dum = 0000001100000000 = 0300
+# from DUT = xxxxxxxxxxxxxxxx = xxxx
+#  ct =           7, score0 =           0, score1 =           0
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 0: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 43, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 43, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle 2: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 43, Mem[6] = xx, Mem[7] = xx
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 3: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 43, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 43, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 02, Next PC = 00000003
+# Cycle 5: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 43, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000010000, Opcode = xxx
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 43, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
+# Instruction = 010011000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
+# Cycle 7: PC = 04, Instruction = 010011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 43, Mem[6] = xx, Mem[7] = xx
+# Instruction = 010000010, Opcode = xxx
+# Cycle 8: PC = 05, Instruction = 010000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 43, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 05, Next PC = 00000006
+# Instruction = 111000000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0a, Current PC = 06, Next PC = 00000007
+# Cycle 9: PC = 06, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 43, Mem[6] = xx, Mem[7] = xx
+# Instruction = 001000010, Opcode = xxx
+# Cycle 10: PC = 07, Instruction = 001000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 43, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 07, Next PC = 00000008
+# Instruction = 010000001, Opcode = xxx
+# 1.750000 * 2**  1 = 0.000000 =          4
+# original binary = 0_10000_1100000000
+# from MAT = 0000001110000000 = 0380
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 08, Next PC = 00000009
+# Cycle 11: PC = 08, Instruction = 010000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 43, Mem[6] = xx, Mem[7] = xx
+# Instruction = 111000001, Opcode = xxx
+# Cycle 12: PC = 09, Instruction = 111000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 43, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 09, Next PC = 0000000a
+# Instruction = 000010001, Opcode = xxx
+# from dum = 0000001110000000 = 0380
+# from DUT = xxxxxxxxxxxxxxxx = xxxx
+#  ct =           8, score0 =           0, score1 =           0
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 0: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 43, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 43, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle 2: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 43, Mem[6] = xx, Mem[7] = xx
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 3: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 43, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 43, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 02, Next PC = 00000003
+# Cycle 5: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 43, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000010000, Opcode = xxx
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 43, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
+# Instruction = 010011000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
+# Cycle 7: PC = 04, Instruction = 010011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 43, Mem[6] = xx, Mem[7] = xx
+# Instruction = 010000010, Opcode = xxx
+# Cycle 8: PC = 05, Instruction = 010000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 43, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 05, Next PC = 00000006
+# Instruction = 111000000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0a, Current PC = 06, Next PC = 00000007
+# Cycle 9: PC = 06, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 43, Mem[6] = xx, Mem[7] = xx
+# Instruction = 001000010, Opcode = xxx
+# Cycle 10: PC = 07, Instruction = 001000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 43, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 07, Next PC = 00000008
+# Instruction = 010000001, Opcode = xxx
+# 1.875000 * 2**  1 = 0.000000 =          4
+# original binary = 0_10000_1110000000
+# from MAT = 0000001111000000 = 03c0
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 08, Next PC = 00000009
+# Cycle 11: PC = 08, Instruction = 010000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 43, Mem[6] = xx, Mem[7] = xx
+# Instruction = 111000001, Opcode = xxx
+# Cycle 12: PC = 09, Instruction = 111000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 43, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 09, Next PC = 0000000a
+# Instruction = 000010001, Opcode = xxx
+# from dum = 0000001111000000 = 03c0
+# from DUT = xxxxxxxxxxxxxxxx = xxxx
+#  ct =           9, score0 =           0, score1 =           0
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 0: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = 40, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = 40, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle 2: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = 40, Mem[6] = xx, Mem[7] = xx
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 3: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = 40, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = 40, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 02, Next PC = 00000003
+# Cycle 5: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = 40, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000010000, Opcode = xxx
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = 40, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
+# Instruction = 010011000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
+# Cycle 7: PC = 04, Instruction = 010011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = 40, Mem[6] = xx, Mem[7] = xx
+# Instruction = 010000010, Opcode = xxx
+# Cycle 8: PC = 05, Instruction = 010000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = 40, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 05, Next PC = 00000006
+# Instruction = 111000000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0a, Current PC = 06, Next PC = 00000007
+# Cycle 9: PC = 06, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = 40, Mem[6] = xx, Mem[7] = xx
+# Instruction = 001000010, Opcode = xxx
+# Cycle 10: PC = 07, Instruction = 001000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = 40, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 07, Next PC = 00000008
+# Instruction = 010000001, Opcode = xxx
+# 1.062500 * 2**  1 = 0.000000 =          2
+# original binary = 0_10000_0001000000
+# from MAT = 0000001000100000 = 0220
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 08, Next PC = 00000009
+# Cycle 11: PC = 08, Instruction = 010000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = 40, Mem[6] = xx, Mem[7] = xx
+# Instruction = 111000001, Opcode = xxx
+# Cycle 12: PC = 09, Instruction = 111000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = 40, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 09, Next PC = 0000000a
+# Instruction = 000010001, Opcode = xxx
+# from dum = 0000001000100000 = 0220
+# from DUT = xxxxxxxxxxxxxxxx = xxxx
+#  ct =          10, score0 =           0, score1 =           0
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 0: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = 41, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = 41, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle 2: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = 41, Mem[6] = xx, Mem[7] = xx
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 3: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = 41, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = 41, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 02, Next PC = 00000003
+# Cycle 5: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = 41, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000010000, Opcode = xxx
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = 41, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
+# Instruction = 010011000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
+# Cycle 7: PC = 04, Instruction = 010011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = 41, Mem[6] = xx, Mem[7] = xx
+# Instruction = 010000010, Opcode = xxx
+# Cycle 8: PC = 05, Instruction = 010000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = 41, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 05, Next PC = 00000006
+# Instruction = 111000000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0a, Current PC = 06, Next PC = 00000007
+# Cycle 9: PC = 06, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = 41, Mem[6] = xx, Mem[7] = xx
+# Instruction = 001000010, Opcode = xxx
+# Cycle 10: PC = 07, Instruction = 001000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = 41, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 07, Next PC = 00000008
+# Instruction = 010000001, Opcode = xxx
+# 1.312500 * 2**  1 = 0.000000 =          3
+# original binary = 0_10000_0101000000
+# from MAT = 0000001010100000 = 02a0
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 08, Next PC = 00000009
+# Cycle 11: PC = 08, Instruction = 010000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = 41, Mem[6] = xx, Mem[7] = xx
+# Instruction = 111000001, Opcode = xxx
+# Cycle 12: PC = 09, Instruction = 111000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = 41, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 09, Next PC = 0000000a
+# Instruction = 000010001, Opcode = xxx
+# from dum = 0000001010100000 = 02a0
+# from DUT = xxxxxxxxxxxxxxxx = xxxx
+#  ct =          11, score0 =           0, score1 =           0
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 0: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = c0, Mem[5] = 41, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = c0, Mem[5] = 41, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle 2: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = c0, Mem[5] = 41, Mem[6] = xx, Mem[7] = xx
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 3: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = c0, Mem[5] = 41, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = c0, Mem[5] = 41, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 02, Next PC = 00000003
+# Cycle 5: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = c0, Mem[5] = 41, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000010000, Opcode = xxx
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = c0, Mem[5] = 41, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
+# Instruction = 010011000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
+# Cycle 7: PC = 04, Instruction = 010011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = c0, Mem[5] = 41, Mem[6] = xx, Mem[7] = xx
+# Instruction = 010000010, Opcode = xxx
+# Cycle 8: PC = 05, Instruction = 010000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = c0, Mem[5] = 41, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 05, Next PC = 00000006
+# Instruction = 111000000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0a, Current PC = 06, Next PC = 00000007
+# Cycle 9: PC = 06, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = c0, Mem[5] = 41, Mem[6] = xx, Mem[7] = xx
+# Instruction = 001000010, Opcode = xxx
+# Cycle 10: PC = 07, Instruction = 001000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = c0, Mem[5] = 41, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 07, Next PC = 00000008
+# Instruction = 010000001, Opcode = xxx
+# 1.437500 * 2**  1 = 0.000000 =          3
+# original binary = 0_10000_0111000000
+# from MAT = 0000001011100000 = 02e0
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 08, Next PC = 00000009
+# Cycle 11: PC = 08, Instruction = 010000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = c0, Mem[5] = 41, Mem[6] = xx, Mem[7] = xx
+# Instruction = 111000001, Opcode = xxx
+# Cycle 12: PC = 09, Instruction = 111000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = c0, Mem[5] = 41, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 09, Next PC = 0000000a
+# Instruction = 000010001, Opcode = xxx
+# from dum = 0000001011100000 = 02e0
+# from DUT = xxxxxxxxxxxxxxxx = xxxx
+#  ct =          12, score0 =           0, score1 =           0
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 0: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 4b, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 4b, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle 2: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 4b, Mem[6] = xx, Mem[7] = xx
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 3: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 4b, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 4b, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 02, Next PC = 00000003
+# Cycle 5: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 4b, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000010000, Opcode = xxx
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 4b, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
+# Instruction = 010011000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
+# Cycle 7: PC = 04, Instruction = 010011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 4b, Mem[6] = xx, Mem[7] = xx
+# Instruction = 010000010, Opcode = xxx
+# Cycle 8: PC = 05, Instruction = 010000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 4b, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 05, Next PC = 00000006
+# Instruction = 111000000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0a, Current PC = 06, Next PC = 00000007
+# Cycle 9: PC = 06, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 4b, Mem[6] = xx, Mem[7] = xx
+# Instruction = 001000010, Opcode = xxx
+# Cycle 10: PC = 07, Instruction = 001000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 4b, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 07, Next PC = 00000008
+# Instruction = 010000001, Opcode = xxx
+# 1.750000 * 2**  3 = 0.000000 =         14
+# original binary = 0_10010_1100000000
+# from MAT = 0000111000000000 = 0e00
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 08, Next PC = 00000009
+# Cycle 11: PC = 08, Instruction = 010000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 4b, Mem[6] = xx, Mem[7] = xx
+# Instruction = 111000001, Opcode = xxx
+# Cycle 12: PC = 09, Instruction = 111000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 4b, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 09, Next PC = 0000000a
+# Instruction = 000010001, Opcode = xxx
+# from dum = 0000111000000000 = 0e00
+# from DUT = xxxxxxxxxxxxxxxx = xxxx
+#  ct =          13, score0 =           0, score1 =           0
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 0: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 4b, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 4b, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle 2: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 4b, Mem[6] = xx, Mem[7] = xx
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 3: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 4b, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 4b, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 02, Next PC = 00000003
+# Cycle 5: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 4b, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000010000, Opcode = xxx
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 4b, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
+# Instruction = 010011000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
+# Cycle 7: PC = 04, Instruction = 010011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 4b, Mem[6] = xx, Mem[7] = xx
+# Instruction = 010000010, Opcode = xxx
+# Cycle 8: PC = 05, Instruction = 010000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 4b, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 05, Next PC = 00000006
+# Instruction = 111000000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0a, Current PC = 06, Next PC = 00000007
+# Cycle 9: PC = 06, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 4b, Mem[6] = xx, Mem[7] = xx
+# Instruction = 001000010, Opcode = xxx
+# Cycle 10: PC = 07, Instruction = 001000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 4b, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 07, Next PC = 00000008
+# Instruction = 010000001, Opcode = xxx
+# 1.875000 * 2**  3 = 0.000000 =         15
+# original binary = 0_10010_1110000000
+# from MAT = 0000111100000000 = 0f00
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 08, Next PC = 00000009
+# Cycle 11: PC = 08, Instruction = 010000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 4b, Mem[6] = xx, Mem[7] = xx
+# Instruction = 111000001, Opcode = xxx
+# Cycle 12: PC = 09, Instruction = 111000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 4b, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 09, Next PC = 0000000a
+# Instruction = 000010001, Opcode = xxx
+# from dum = 0000111100000000 = 0f00
+# from DUT = xxxxxxxxxxxxxxxx = xxxx
+#  ct =          14, score0 =           0, score1 =           0
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 0: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 63, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 63, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle 2: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 63, Mem[6] = xx, Mem[7] = xx
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 3: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 63, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 63, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 02, Next PC = 00000003
+# Cycle 5: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 63, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000010000, Opcode = xxx
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 63, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
+# Instruction = 010011000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
+# Cycle 7: PC = 04, Instruction = 010011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 63, Mem[6] = xx, Mem[7] = xx
+# Instruction = 010000010, Opcode = xxx
+# Cycle 8: PC = 05, Instruction = 010000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 63, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 05, Next PC = 00000006
+# Instruction = 111000000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0a, Current PC = 06, Next PC = 00000007
+# Cycle 9: PC = 06, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 63, Mem[6] = xx, Mem[7] = xx
+# Instruction = 001000010, Opcode = xxx
+# Cycle 10: PC = 07, Instruction = 001000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 63, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 07, Next PC = 00000008
+# Instruction = 010000001, Opcode = xxx
+# 1.750000 * 2**  9 = 0.000000 =         15
+# original binary = 0_11000_1100000000
+# from MAT = 0111111111111111 = 7fff
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 08, Next PC = 00000009
+# Cycle 11: PC = 08, Instruction = 010000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 63, Mem[6] = xx, Mem[7] = xx
+# Instruction = 111000001, Opcode = xxx
+# Cycle 12: PC = 09, Instruction = 111000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 63, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 09, Next PC = 0000000a
+# Instruction = 000010001, Opcode = xxx
+# from dum = 0111111111111111 = 7fff
+# from DUT = xxxxxxxxxxxxxxxx = xxxx
+#  ct =          15, score0 =           0, score1 =           0
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 0: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 67, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 67, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle 2: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 67, Mem[6] = xx, Mem[7] = xx
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 3: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 67, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 67, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 02, Next PC = 00000003
+# Cycle 5: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 67, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000010000, Opcode = xxx
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 67, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
+# Instruction = 010011000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
+# Cycle 7: PC = 04, Instruction = 010011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 67, Mem[6] = xx, Mem[7] = xx
+# Instruction = 010000010, Opcode = xxx
+# Cycle 8: PC = 05, Instruction = 010000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 67, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 05, Next PC = 00000006
+# Instruction = 111000000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0a, Current PC = 06, Next PC = 00000007
+# Cycle 9: PC = 06, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 67, Mem[6] = xx, Mem[7] = xx
+# Instruction = 001000010, Opcode = xxx
+# Cycle 10: PC = 07, Instruction = 001000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 67, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 07, Next PC = 00000008
+# Instruction = 010000001, Opcode = xxx
+# 1.750000 * 2** 10 = 0.000000 =         15
+# original binary = 0_11001_1100000000
+# from MAT = 0111111111111111 = 7fff
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 08, Next PC = 00000009
+# Cycle 11: PC = 08, Instruction = 010000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 67, Mem[6] = xx, Mem[7] = xx
+# Instruction = 111000001, Opcode = xxx
+# Cycle 12: PC = 09, Instruction = 111000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 67, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 09, Next PC = 0000000a
+# Instruction = 000010001, Opcode = xxx
+# from dum = 0111111111111111 = 7fff
+# from DUT = xxxxxxxxxxxxxxxx = xxxx
+#  ct =          16, score0 =           0, score1 =           0
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 0: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 77, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 77, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle 2: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 77, Mem[6] = xx, Mem[7] = xx
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 3: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 77, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 77, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 02, Next PC = 00000003
+# Cycle 5: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 77, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000010000, Opcode = xxx
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 77, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
+# Instruction = 010011000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
+# Cycle 7: PC = 04, Instruction = 010011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 77, Mem[6] = xx, Mem[7] = xx
+# Instruction = 010000010, Opcode = xxx
+# Cycle 8: PC = 05, Instruction = 010000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 77, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 05, Next PC = 00000006
+# Instruction = 111000000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0a, Current PC = 06, Next PC = 00000007
+# Cycle 9: PC = 06, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 77, Mem[6] = xx, Mem[7] = xx
+# Instruction = 001000010, Opcode = xxx
+# Cycle 10: PC = 07, Instruction = 001000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 77, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 07, Next PC = 00000008
+# Instruction = 010000001, Opcode = xxx
+# 1.875000 * 2** 14 = 0.000000 =         15
+# original binary = 0_11101_1110000000
+# from MAT = 0111111111111111 = 7fff
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 08, Next PC = 00000009
+# Cycle 11: PC = 08, Instruction = 010000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 77, Mem[6] = xx, Mem[7] = xx
+# Instruction = 111000001, Opcode = xxx
+# Cycle 12: PC = 09, Instruction = 111000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 77, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 09, Next PC = 0000000a
+# Instruction = 000010001, Opcode = xxx
+# from dum = 0111111111111111 = 7fff
+# from DUT = xxxxxxxxxxxxxxxx = xxxx
+#  ct =          17, score0 =           0, score1 =           0
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 0: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 7b, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 7b, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle 2: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 7b, Mem[6] = xx, Mem[7] = xx
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 3: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 7b, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 7b, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 02, Next PC = 00000003
+# Cycle 5: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 7b, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000010000, Opcode = xxx
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 7b, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
+# Instruction = 010011000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
+# Cycle 7: PC = 04, Instruction = 010011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 7b, Mem[6] = xx, Mem[7] = xx
+# Instruction = 010000010, Opcode = xxx
+# Cycle 8: PC = 05, Instruction = 010000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 7b, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 05, Next PC = 00000006
+# Instruction = 111000000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0a, Current PC = 06, Next PC = 00000007
+# Cycle 9: PC = 06, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 7b, Mem[6] = xx, Mem[7] = xx
+# Instruction = 001000010, Opcode = xxx
+# Cycle 10: PC = 07, Instruction = 001000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 7b, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 07, Next PC = 00000008
+# Instruction = 010000001, Opcode = xxx
+# 1.875000 * 2** 15 = 0.000000 =         15
+# original binary = 0_11110_1110000000
+# from MAT = 0111111111111111 = 7fff
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 08, Next PC = 00000009
+# Cycle 11: PC = 08, Instruction = 010000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 7b, Mem[6] = xx, Mem[7] = xx
+# Instruction = 111000001, Opcode = xxx
+# Cycle 12: PC = 09, Instruction = 111000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = 7b, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 09, Next PC = 0000000a
+# Instruction = 000010001, Opcode = xxx
+# from dum = 0111111111111111 = 7fff
+# from DUT = xxxxxxxxxxxxxxxx = xxxx
+#  ct =          18, score0 =           0, score1 =           0
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 0: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 80, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 80, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle 2: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 80, Mem[6] = xx, Mem[7] = xx
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 3: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 80, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 80, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 02, Next PC = 00000003
+# Cycle 5: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 80, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000010000, Opcode = xxx
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 80, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
+# Instruction = 010011000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
+# Cycle 7: PC = 04, Instruction = 010011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 80, Mem[6] = xx, Mem[7] = xx
+# Instruction = 010000010, Opcode = xxx
+# Cycle 8: PC = 05, Instruction = 010000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 80, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 05, Next PC = 00000006
+# Instruction = 111000000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0a, Current PC = 06, Next PC = 00000007
+# Cycle 9: PC = 06, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 80, Mem[6] = xx, Mem[7] = xx
+# Instruction = 001000010, Opcode = xxx
+# Cycle 10: PC = 07, Instruction = 001000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 80, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 07, Next PC = 00000008
+# Instruction = 010000001, Opcode = xxx
+# 0.000000 * 2**-15 = 0.000000 =          0
+# original binary = 1_00000_0000000000
+# from MAT = 1000000000000000 = 8000
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 08, Next PC = 00000009
+# Cycle 11: PC = 08, Instruction = 010000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 80, Mem[6] = xx, Mem[7] = xx
+# Instruction = 111000001, Opcode = xxx
+# Cycle 12: PC = 09, Instruction = 111000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = 80, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 09, Next PC = 0000000a
+# Instruction = 000010001, Opcode = xxx
+# from dum = 1000000000000000 = 8000
+# from DUT = xxxxxxxxxxxxxxxx = xxxx
+#  ct =          19, score0 =           0, score1 =           0
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 0: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = bc, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = bc, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle 2: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = bc, Mem[6] = xx, Mem[7] = xx
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 3: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = bc, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = bc, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 02, Next PC = 00000003
+# Cycle 5: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = bc, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000010000, Opcode = xxx
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = bc, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
+# Instruction = 010011000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
+# Cycle 7: PC = 04, Instruction = 010011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = bc, Mem[6] = xx, Mem[7] = xx
+# Instruction = 010000010, Opcode = xxx
+# Cycle 8: PC = 05, Instruction = 010000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = bc, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 05, Next PC = 00000006
+# Instruction = 111000000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0a, Current PC = 06, Next PC = 00000007
+# Cycle 9: PC = 06, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = bc, Mem[6] = xx, Mem[7] = xx
+# Instruction = 001000010, Opcode = xxx
+# Cycle 10: PC = 07, Instruction = 001000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = bc, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 07, Next PC = 00000008
+# Instruction = 010000001, Opcode = xxx
+# 1.000000 * 2**  0 = 0.000000 =          1
+# original binary = 1_01111_0000000000
+# from MAT = 1000000100000000 = 8100
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 08, Next PC = 00000009
+# Cycle 11: PC = 08, Instruction = 010000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = bc, Mem[6] = xx, Mem[7] = xx
+# Instruction = 111000001, Opcode = xxx
+# Cycle 12: PC = 09, Instruction = 111000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = bc, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 09, Next PC = 0000000a
+# Instruction = 000010001, Opcode = xxx
+# from dum = 1000000100000000 = 8100
+# from DUT = xxxxxxxxxxxxxxxx = xxxx
+#  ct =          20, score0 =           0, score1 =           0
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 0: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = bd, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = bd, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle 2: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = bd, Mem[6] = xx, Mem[7] = xx
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 3: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = bd, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = bd, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 02, Next PC = 00000003
+# Cycle 5: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = bd, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000010000, Opcode = xxx
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = bd, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
+# Instruction = 010011000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
+# Cycle 7: PC = 04, Instruction = 010011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = bd, Mem[6] = xx, Mem[7] = xx
+# Instruction = 010000010, Opcode = xxx
+# Cycle 8: PC = 05, Instruction = 010000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = bd, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 05, Next PC = 00000006
+# Instruction = 111000000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0a, Current PC = 06, Next PC = 00000007
+# Cycle 9: PC = 06, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = bd, Mem[6] = xx, Mem[7] = xx
+# Instruction = 001000010, Opcode = xxx
+# Cycle 10: PC = 07, Instruction = 001000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = bd, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 07, Next PC = 00000008
+# Instruction = 010000001, Opcode = xxx
+# 1.250000 * 2**  0 = 0.000000 =          1
+# original binary = 1_01111_0100000000
+# from MAT = 1000000101000000 = 8140
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 08, Next PC = 00000009
+# Cycle 11: PC = 08, Instruction = 010000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = bd, Mem[6] = xx, Mem[7] = xx
+# Instruction = 111000001, Opcode = xxx
+# Cycle 12: PC = 09, Instruction = 111000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = bd, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 09, Next PC = 0000000a
+# Instruction = 000010001, Opcode = xxx
+# from dum = 1000000101000000 = 8140
+# from DUT = xxxxxxxxxxxxxxxx = xxxx
+#  ct =          21, score0 =           0, score1 =           0
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 0: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = c0, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = c0, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle 2: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = c0, Mem[6] = xx, Mem[7] = xx
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 3: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = c0, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = c0, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 02, Next PC = 00000003
+# Cycle 5: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = c0, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000010000, Opcode = xxx
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = c0, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
+# Instruction = 010011000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
+# Cycle 7: PC = 04, Instruction = 010011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = c0, Mem[6] = xx, Mem[7] = xx
+# Instruction = 010000010, Opcode = xxx
+# Cycle 8: PC = 05, Instruction = 010000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = c0, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 05, Next PC = 00000006
+# Instruction = 111000000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0a, Current PC = 06, Next PC = 00000007
+# Cycle 9: PC = 06, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = c0, Mem[6] = xx, Mem[7] = xx
+# Instruction = 001000010, Opcode = xxx
+# Cycle 10: PC = 07, Instruction = 001000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = c0, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 07, Next PC = 00000008
+# Instruction = 010000001, Opcode = xxx
+# 1.000000 * 2**  1 = 0.000000 =          2
+# original binary = 1_10000_0000000000
+# from MAT = 1000001000000000 = 8200
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 08, Next PC = 00000009
+# Cycle 11: PC = 08, Instruction = 010000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = c0, Mem[6] = xx, Mem[7] = xx
+# Instruction = 111000001, Opcode = xxx
+# Cycle 12: PC = 09, Instruction = 111000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = c0, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 09, Next PC = 0000000a
+# Instruction = 000010001, Opcode = xxx
+# from dum = 1000001000000000 = 8200
+# from DUT = xxxxxxxxxxxxxxxx = xxxx
+#  ct =          22, score0 =           0, score1 =           0
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 0: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = c2, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = c2, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle 2: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = c2, Mem[6] = xx, Mem[7] = xx
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 3: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = c2, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = c2, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 02, Next PC = 00000003
+# Cycle 5: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = c2, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000010000, Opcode = xxx
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = c2, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
+# Instruction = 010011000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
+# Cycle 7: PC = 04, Instruction = 010011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = c2, Mem[6] = xx, Mem[7] = xx
+# Instruction = 010000010, Opcode = xxx
+# Cycle 8: PC = 05, Instruction = 010000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = c2, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 05, Next PC = 00000006
+# Instruction = 111000000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0a, Current PC = 06, Next PC = 00000007
+# Cycle 9: PC = 06, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = c2, Mem[6] = xx, Mem[7] = xx
+# Instruction = 001000010, Opcode = xxx
+# Cycle 10: PC = 07, Instruction = 001000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = c2, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 07, Next PC = 00000008
+# Instruction = 010000001, Opcode = xxx
+# 1.500000 * 2**  1 = 0.000000 =          3
+# original binary = 1_10000_1000000000
+# from MAT = 1000001100000000 = 8300
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 08, Next PC = 00000009
+# Cycle 11: PC = 08, Instruction = 010000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = c2, Mem[6] = xx, Mem[7] = xx
+# Instruction = 111000001, Opcode = xxx
+# Cycle 12: PC = 09, Instruction = 111000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = c2, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 09, Next PC = 0000000a
+# Instruction = 000010001, Opcode = xxx
+# from dum = 1000001100000000 = 8300
+# from DUT = xxxxxxxxxxxxxxxx = xxxx
+#  ct =          23, score0 =           0, score1 =           0
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 0: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = c0, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = c0, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle 2: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = c0, Mem[6] = xx, Mem[7] = xx
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 3: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = c0, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = c0, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 02, Next PC = 00000003
+# Cycle 5: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = c0, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000010000, Opcode = xxx
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = c0, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
+# Instruction = 010011000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
+# Cycle 7: PC = 04, Instruction = 010011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = c0, Mem[6] = xx, Mem[7] = xx
+# Instruction = 010000010, Opcode = xxx
+# Cycle 8: PC = 05, Instruction = 010000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = c0, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 05, Next PC = 00000006
+# Instruction = 111000000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0a, Current PC = 06, Next PC = 00000007
+# Cycle 9: PC = 06, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = c0, Mem[6] = xx, Mem[7] = xx
+# Instruction = 001000010, Opcode = xxx
+# Cycle 10: PC = 07, Instruction = 001000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = c0, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 07, Next PC = 00000008
+# Instruction = 010000001, Opcode = xxx
+# 1.062500 * 2**  1 = 0.000000 =          2
+# original binary = 1_10000_0001000000
+# from MAT = 1000001000100000 = 8220
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 08, Next PC = 00000009
+# Cycle 11: PC = 08, Instruction = 010000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = c0, Mem[6] = xx, Mem[7] = xx
+# Instruction = 111000001, Opcode = xxx
+# Cycle 12: PC = 09, Instruction = 111000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = c0, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 09, Next PC = 0000000a
+# Instruction = 000010001, Opcode = xxx
+# from dum = 1000001000100000 = 8220
+# from DUT = xxxxxxxxxxxxxxxx = xxxx
+#  ct =          24, score0 =           0, score1 =           0
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 0: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = c0, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = c0, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle 2: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = c0, Mem[6] = xx, Mem[7] = xx
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 3: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = c0, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = c0, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 02, Next PC = 00000003
+# Cycle 5: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = c0, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000010000, Opcode = xxx
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = c0, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
+# Instruction = 010011000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
+# Cycle 7: PC = 04, Instruction = 010011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = c0, Mem[6] = xx, Mem[7] = xx
+# Instruction = 010000010, Opcode = xxx
+# Cycle 8: PC = 05, Instruction = 010000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = c0, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 05, Next PC = 00000006
+# Instruction = 111000000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0a, Current PC = 06, Next PC = 00000007
+# Cycle 9: PC = 06, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = c0, Mem[6] = xx, Mem[7] = xx
+# Instruction = 001000010, Opcode = xxx
+# Cycle 10: PC = 07, Instruction = 001000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = c0, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 07, Next PC = 00000008
+# Instruction = 010000001, Opcode = xxx
+# 1.062500 * 2**  1 = 0.000000 =          2
+# original binary = 1_10000_0001000000
+# from MAT = 1000001000100000 = 8220
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 08, Next PC = 00000009
+# Cycle 11: PC = 08, Instruction = 010000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = c0, Mem[6] = xx, Mem[7] = xx
+# Instruction = 111000001, Opcode = xxx
+# Cycle 12: PC = 09, Instruction = 111000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 40, Mem[5] = c0, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 09, Next PC = 0000000a
+# Instruction = 000010001, Opcode = xxx
+# from dum = 1000001000100000 = 8220
+# from DUT = xxxxxxxxxxxxxxxx = xxxx
+#  ct =          25, score0 =           0, score1 =           0
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 0: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = cb, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = cb, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle 2: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = cb, Mem[6] = xx, Mem[7] = xx
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 3: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = cb, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = cb, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 02, Next PC = 00000003
+# Cycle 5: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = cb, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000010000, Opcode = xxx
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = cb, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
+# Instruction = 010011000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
+# Cycle 7: PC = 04, Instruction = 010011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = cb, Mem[6] = xx, Mem[7] = xx
+# Instruction = 010000010, Opcode = xxx
+# Cycle 8: PC = 05, Instruction = 010000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = cb, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 05, Next PC = 00000006
+# Instruction = 111000000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0a, Current PC = 06, Next PC = 00000007
+# Cycle 9: PC = 06, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = cb, Mem[6] = xx, Mem[7] = xx
+# Instruction = 001000010, Opcode = xxx
+# Cycle 10: PC = 07, Instruction = 001000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = cb, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 07, Next PC = 00000008
+# Instruction = 010000001, Opcode = xxx
+# 1.750000 * 2**  3 = 0.000000 =         14
+# original binary = 1_10010_1100000000
+# from MAT = 1000111000000000 = 8e00
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 08, Next PC = 00000009
+# Cycle 11: PC = 08, Instruction = 010000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = cb, Mem[6] = xx, Mem[7] = xx
+# Instruction = 111000001, Opcode = xxx
+# Cycle 12: PC = 09, Instruction = 111000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = cb, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 09, Next PC = 0000000a
+# Instruction = 000010001, Opcode = xxx
+# from dum = 1000111000000000 = 8e00
+# from DUT = xxxxxxxxxxxxxxxx = xxxx
+#  ct =          26, score0 =           0, score1 =           0
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 0: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = cb, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = cb, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle 2: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = cb, Mem[6] = xx, Mem[7] = xx
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 3: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = cb, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = cb, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 02, Next PC = 00000003
+# Cycle 5: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = cb, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000010000, Opcode = xxx
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = cb, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
+# Instruction = 010011000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
+# Cycle 7: PC = 04, Instruction = 010011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = cb, Mem[6] = xx, Mem[7] = xx
+# Instruction = 010000010, Opcode = xxx
+# Cycle 8: PC = 05, Instruction = 010000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = cb, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 05, Next PC = 00000006
+# Instruction = 111000000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0a, Current PC = 06, Next PC = 00000007
+# Cycle 9: PC = 06, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = cb, Mem[6] = xx, Mem[7] = xx
+# Instruction = 001000010, Opcode = xxx
+# Cycle 10: PC = 07, Instruction = 001000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = cb, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 07, Next PC = 00000008
+# Instruction = 010000001, Opcode = xxx
+# 1.875000 * 2**  3 = 0.000000 =         15
+# original binary = 1_10010_1110000000
+# from MAT = 1000111100000000 = 8f00
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 08, Next PC = 00000009
+# Cycle 11: PC = 08, Instruction = 010000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = cb, Mem[6] = xx, Mem[7] = xx
+# Instruction = 111000001, Opcode = xxx
+# Cycle 12: PC = 09, Instruction = 111000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = cb, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 09, Next PC = 0000000a
+# Instruction = 000010001, Opcode = xxx
+# from dum = 1000111100000000 = 8f00
+# from DUT = xxxxxxxxxxxxxxxx = xxxx
+#  ct =          27, score0 =           0, score1 =           0
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 0: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = e3, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = e3, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle 2: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = e3, Mem[6] = xx, Mem[7] = xx
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 3: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = e3, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = e3, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 02, Next PC = 00000003
+# Cycle 5: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = e3, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000010000, Opcode = xxx
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = e3, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
+# Instruction = 010011000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
+# Cycle 7: PC = 04, Instruction = 010011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = e3, Mem[6] = xx, Mem[7] = xx
+# Instruction = 010000010, Opcode = xxx
+# Cycle 8: PC = 05, Instruction = 010000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = e3, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 05, Next PC = 00000006
+# Instruction = 111000000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0a, Current PC = 06, Next PC = 00000007
+# Cycle 9: PC = 06, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = e3, Mem[6] = xx, Mem[7] = xx
+# Instruction = 001000010, Opcode = xxx
+# Cycle 10: PC = 07, Instruction = 001000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = e3, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 07, Next PC = 00000008
+# Instruction = 010000001, Opcode = xxx
+# 1.750000 * 2**  9 = 0.000000 =         15
+# original binary = 1_11000_1100000000
+# from MAT = 1111111111111111 = ffff
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 08, Next PC = 00000009
+# Cycle 11: PC = 08, Instruction = 010000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = e3, Mem[6] = xx, Mem[7] = xx
+# Instruction = 111000001, Opcode = xxx
+# Cycle 12: PC = 09, Instruction = 111000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = e3, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 09, Next PC = 0000000a
+# Instruction = 000010001, Opcode = xxx
+# from dum = 1111111111111111 = ffff
+# from DUT = xxxxxxxxxxxxxxxx = xxxx
+#  ct =          28, score0 =           0, score1 =           0
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 0: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = e7, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = e7, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle 2: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = e7, Mem[6] = xx, Mem[7] = xx
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 3: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = e7, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = e7, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 02, Next PC = 00000003
+# Cycle 5: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = e7, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000010000, Opcode = xxx
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = e7, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
+# Instruction = 010011000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
+# Cycle 7: PC = 04, Instruction = 010011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = e7, Mem[6] = xx, Mem[7] = xx
+# Instruction = 010000010, Opcode = xxx
+# Cycle 8: PC = 05, Instruction = 010000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = e7, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 05, Next PC = 00000006
+# Instruction = 111000000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0a, Current PC = 06, Next PC = 00000007
+# Cycle 9: PC = 06, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = e7, Mem[6] = xx, Mem[7] = xx
+# Instruction = 001000010, Opcode = xxx
+# Cycle 10: PC = 07, Instruction = 001000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = e7, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 07, Next PC = 00000008
+# Instruction = 010000001, Opcode = xxx
+# 1.750000 * 2** 10 = 0.000000 =         15
+# original binary = 1_11001_1100000000
+# from MAT = 1111111111111111 = ffff
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 08, Next PC = 00000009
+# Cycle 11: PC = 08, Instruction = 010000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = e7, Mem[6] = xx, Mem[7] = xx
+# Instruction = 111000001, Opcode = xxx
+# Cycle 12: PC = 09, Instruction = 111000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 00, Mem[5] = e7, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 09, Next PC = 0000000a
+# Instruction = 000010001, Opcode = xxx
+# from dum = 1111111111111111 = ffff
+# from DUT = xxxxxxxxxxxxxxxx = xxxx
+#  ct =          29, score0 =           0, score1 =           0
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 0: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = f7, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = f7, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle 2: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = f7, Mem[6] = xx, Mem[7] = xx
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 3: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = f7, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = f7, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 02, Next PC = 00000003
+# Cycle 5: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = f7, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000010000, Opcode = xxx
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = f7, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
+# Instruction = 010011000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
+# Cycle 7: PC = 04, Instruction = 010011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = f7, Mem[6] = xx, Mem[7] = xx
+# Instruction = 010000010, Opcode = xxx
+# Cycle 8: PC = 05, Instruction = 010000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = f7, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 05, Next PC = 00000006
+# Instruction = 111000000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0a, Current PC = 06, Next PC = 00000007
+# Cycle 9: PC = 06, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = f7, Mem[6] = xx, Mem[7] = xx
+# Instruction = 001000010, Opcode = xxx
+# Cycle 10: PC = 07, Instruction = 001000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = f7, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 07, Next PC = 00000008
+# Instruction = 010000001, Opcode = xxx
+# 1.875000 * 2** 14 = 0.000000 =         15
+# original binary = 1_11101_1110000000
+# from MAT = 1111111111111111 = ffff
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 08, Next PC = 00000009
+# Cycle 11: PC = 08, Instruction = 010000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = f7, Mem[6] = xx, Mem[7] = xx
+# Instruction = 111000001, Opcode = xxx
+# Cycle 12: PC = 09, Instruction = 111000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = f7, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 09, Next PC = 0000000a
+# Instruction = 000010001, Opcode = xxx
+# from dum = 1111111111111111 = ffff
+# from DUT = xxxxxxxxxxxxxxxx = xxxx
+#  ct =          30, score0 =           0, score1 =           0
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 0: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = fb, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = fb, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle 2: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = fb, Mem[6] = xx, Mem[7] = xx
+# Instruction = 100000100, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0b, Current PC = 00, Next PC = 00000001
+# Cycle 3: PC = 00, Instruction = 100000100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = fb, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001000, Opcode = xxx
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = fb, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
+# Instruction = 100000101, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 02, Next PC = 00000003
+# Cycle 5: PC = 02, Instruction = 100000101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = fb, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000010000, Opcode = xxx
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = fb, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
+# Instruction = 010011000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
+# Cycle 7: PC = 04, Instruction = 010011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = fb, Mem[6] = xx, Mem[7] = xx
+# Instruction = 010000010, Opcode = xxx
+# Cycle 8: PC = 05, Instruction = 010000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = fb, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 05, Next PC = 00000006
+# Instruction = 111000000, Opcode = xxx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0a, Current PC = 06, Next PC = 00000007
+# Cycle 9: PC = 06, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = fb, Mem[6] = xx, Mem[7] = xx
+# Instruction = 001000010, Opcode = xxx
+# Cycle 10: PC = 07, Instruction = 001000010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = fb, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 10, Current PC = 07, Next PC = 00000008
+# Instruction = 010000001, Opcode = xxx
+# 1.875000 * 2** 15 = 0.000000 =         15
+# original binary = 1_11110_1110000000
+# from MAT = 1111111111111111 = ffff
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 08, Next PC = 00000009
+# Cycle 11: PC = 08, Instruction = 010000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = fb, Mem[6] = xx, Mem[7] = xx
+# Instruction = 111000001, Opcode = xxx
+# Cycle 12: PC = 09, Instruction = 111000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = fb, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0d, Current PC = 09, Next PC = 0000000a
+# Instruction = 000010001, Opcode = xxx
+# from dum = 1111111111111111 = ffff
+# from DUT = xxxxxxxxxxxxxxxx = xxxx
+#  ct =          31, score0 =           0, score1 =           0
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 0a, Next PC = 0000000b
+# Cycle 13: PC = 0a, Instruction = 000010001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = fb, Mem[6] = xx, Mem[7] = xx
+# Instruction = 000001001, Opcode = xxx
+# Cycle 14: PC = 0b, Instruction = 000001001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, Zero = 1, Mem[4] = 80, Mem[5] = fb, Mem[6] = xx, Mem[7] = xx
+# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 0b, Next PC = 0000000c
+# Instruction = 000010010, Opcode = xxx
+# correct           0 out of total          31
+# correct           0 out of total          31
+# ** Note: $stop    : flt2fix_tb.sv(57)
+#    Time: 4365 ns  Iteration: 0  Instance: /flt2fix_tb_noround
+# Break in Module flt2fix_tb_noround at flt2fix_tb.sv line 57
+# Stopped at flt2fix_tb.sv line 57
+# exit
+# End time: 07:37:18 on Aug 01,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+End time: 07:37:18 on Aug 01,2025, Elapsed time: 0:00:02
+*** Summary *********************************************
+    qrun: Errors:   0, Warnings:   0
+    vlog: Errors:   0, Warnings:   0
+    vopt: Errors:   0, Warnings:   1
+    vsim: Errors:   0, Warnings:   0
+  Totals: Errors:   0, Warnings:   1

@@ -1,0 +1,309 @@
+m255
+K4
+z2
+Z0 !s99 nomlopt
+!s11f vlog 2024.3_1 2024.10, Oct 17 2024
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z1 d/home/runner
+vALU
+Z2 2design.sv|testbench.sv
+Z3 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z4 !s110 1754048070
+!i10b 1
+!s100 =OS3dN79=A_;>QGKAUGZK1
+IEWWAZn1lKMaZ5F34Jbzck3
+S1
+R1
+Z5 w1754048065
+8ALU.sv
+FALU.sv
+!i122 0
+L0 1 17
+Z6 VDg1SIo80bB@j0V0VzS_@n1
+Z7 OL;L;2024.3_1;79
+r1
+!s85 0
+31
+Z8 !s108 1754048070.000000
+Z9 !s107 new_fix2flt_tb.sv|Top_level.sv|RegFile.sv|ProgCtrl.sv|LUT.sv|InstROM.sv|data_mem.sv|CRTL.sv|ALU.sv|Top_level0.sv|data_mem0.sv|testbench.sv|design.sv|
+Z10 !s90 -timescale|1ns/1ns|-mfcu|design.sv|testbench.sv|-work|qrun.out/work|-statslog|qrun.out/stats_log|-writesessionid|+qrun.out/top_dus|-csession=incr|
+!i113 0
+Z11 o-timescale 1ns/1ns -mfcu -work qrun.out/work
+Z12 tCvgOpt 0
+n@a@l@u
+vCTRL
+R2
+R3
+R4
+!i10b 1
+!s100 f?ME_XVQCEW_BQ[H6=QN80
+Ih2S2V]0zehJKCi6S2Ohl@2
+S1
+R1
+R5
+8CRTL.sv
+FCRTL.sv
+!i122 0
+L0 1 26
+R6
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 0
+R11
+R12
+n@c@t@r@l
+vdata_mem
+R2
+R3
+R4
+!i10b 1
+!s100 @9=>FF6^AciTOS`YHPdU]1
+IbWeJo>Roo@f_Bm40h6R?b0
+S1
+R1
+R5
+8data_mem.sv
+Fdata_mem.sv
+!i122 0
+Z13 L0 1 19
+R6
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 0
+R11
+R12
+vdata_mem0
+R2
+R3
+R4
+!i10b 1
+!s100 1<GL08PN34SU?7O>f3Kh62
+IIYMSWJ9cJO=zbQ4;P@92l0
+S1
+R1
+R5
+8data_mem0.sv
+Fdata_mem0.sv
+!i122 0
+L0 9 31
+R6
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 0
+R11
+R12
+vInstROM
+R2
+R3
+R4
+!i10b 1
+!s100 Z:k]J68AaT1kNSUQAMi_a2
+IdM9zAH_HjG;^^MNGeT;;R1
+S1
+R1
+R5
+8InstROM.sv
+FInstROM.sv
+!i122 0
+L0 1 44
+R6
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 0
+R11
+R12
+n@inst@r@o@m
+vLUT
+R2
+R3
+R4
+!i10b 1
+!s100 2R?nP]=]g1enhiPZbMBI73
+I[OQ@g80>DVDodoQQ^ah^H3
+S1
+R1
+R5
+8LUT.sv
+FLUT.sv
+!i122 0
+L0 1 16
+R6
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 0
+R11
+R12
+n@l@u@t
+vnew_int2flt_tb
+R2
+R3
+R4
+!i10b 1
+!s100 oa59zRQ1o<]YhZ;8QNJ1X2
+IUzPQ44<QgCaiI6a=G5;BG1
+S1
+R1
+R5
+8new_fix2flt_tb.sv
+Fnew_fix2flt_tb.sv
+!i122 0
+L0 10 149
+R6
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 0
+R11
+R12
+vProgCtrl
+R2
+R3
+R4
+!i10b 1
+!s100 m:4[cbcionf=@o`AUhY@72
+I5_M[FBHlGA?S>C=La1;:h0
+S1
+R1
+R5
+8ProgCtrl.sv
+FProgCtrl.sv
+!i122 0
+L0 1 12
+R6
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 0
+R11
+R12
+n@prog@ctrl
+Tqrun_opt
+R4
+V0GgU=HX>b=UzcYcl_bcMC1
+04 9 4 work data_mem0 fast 0
+04 14 4 work new_int2flt_tb fast 0
+R0
+!s12f OEM100
+!s12b OEM100
+!s124 OEM100
+!s135 nogc
+o-access=rw+/. -timescale 1ns/1ns -mfcu +acc=npr -work qrun.out/work
+R12
+nqrun_opt
+OL;O;2024.3_1;79
+vRegFile
+R2
+R3
+R4
+!i10b 1
+!s100 RW@hP>ji>;PP;Uno8=zn91
+Ij2V5RAM7Wg3PK^a_?l;F83
+S1
+R1
+R5
+8RegFile.sv
+FRegFile.sv
+!i122 0
+R13
+R6
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 0
+R11
+R12
+n@reg@file
+vTopLevel
+R2
+R3
+R4
+!i10b 1
+!s100 8zOAaDF_3BbQJJfEK?A_o0
+IOn]Afhi`HNAPO=A[M_?GD2
+S1
+R1
+R5
+8Top_level.sv
+FTop_level.sv
+!i122 0
+L0 1 114
+R6
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 0
+R11
+R12
+n@top@level
+vTopLevel0
+R2
+R3
+R4
+!i10b 1
+!s100 mI:`c0E[2g;EVe>d04>FN2
+IzVi<M7eJ]?KW@?U@k7>;e0
+S1
+R1
+R5
+8Top_level0.sv
+FTop_level0.sv
+!i122 0
+L0 1 74
+R6
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 0
+R11
+R12
+n@top@level0

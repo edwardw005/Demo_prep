@@ -1,0 +1,6 @@
+BEGIN 1:data_mem:fast:work
+    mem_core :  1:fltflt_tb:fast:work 1:TopLevel0:fast:work 1:TopLevel:fast:work
+END 
+BEGIN 1:RegFile:fast:work
+    regs :  1:TopLevel:fast:work
+END 

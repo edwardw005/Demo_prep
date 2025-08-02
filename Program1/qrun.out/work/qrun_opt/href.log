@@ -1,6 +1,0 @@
-BEGIN 1:RegFile:fast:work
-    regs :  1:TopLevel:fast:work
-END 
-BEGIN 1:data_mem:fast:work
-    mem_core :  1:TopLevel0:fast:work 1:TopLevel:fast:work 1:new_int2flt_tb:fast:work
-END 

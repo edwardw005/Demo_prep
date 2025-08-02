@@ -99,7 +99,7 @@ module TopLevel (
         done <= 1'b0;
       end
       if (cycle_ctr == 10'd1000) begin
-        $display("Timeout: Infinite loop detected at PC = %h, instruction = %b", PC, instruction);
+//        $display("Timeout: Infinite loop detected at PC = %h, instruction = %b", PC, instruction);
         $finish;
       end
     end
@@ -107,7 +107,7 @@ module TopLevel (
 
   always @(posedge clk) begin
     if (!reset) begin
-      $display("Cycle %0d: PC = %h, Instruction = %b, R0 = %h, R1 = %h, R2 = %h, R3 = %h, R4 = %h, R5 = %h, R6 = %h, R7 = %h, Zero = %b, Mem[8] = %h, Mem[9] = %h, Mem[10] = %h, Mem[11] = %h",
+//      $display("Cycle %0d: PC = %h, Instruction = %b, R0 = %h, R1 = %h, R2 = %h, R3 = %h, R4 = %h, R5 = %h, R6 = %h, R7 = %h, Zero = %b, Mem[8] = %h, Mem[9] = %h, Mem[10] = %h, Mem[11] = %h",
                cycle_ctr, PC, instruction, reg_file.regs[0], reg_file.regs[1], reg_file.regs[2], reg_file.regs[3], reg_file.regs[4], reg_file.regs[5], reg_file.regs[6], reg_file.regs[7], zero,
                data_mem1.mem_core[8], data_mem1.mem_core[9], data_mem1.mem_core[10], data_mem1.mem_core[11]);
     end

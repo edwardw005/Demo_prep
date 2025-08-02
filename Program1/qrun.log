@@ -1,15 +1,15 @@
 QuestaSim-64 qrun 2024.3_1 Utility 2024.10 Oct 17 2024
-Start time: 07:34:30 on Aug 01,2025
+Start time: 03:39:23 on Aug 02,2025
 qrun -batch -access=rw+/. -timescale 1ns/1ns -mfcu design.sv testbench.sv -voptargs="+acc=npr" -do " run -all; exit" 
 Creating library 'qrun.out/work'.
 QuestaSim-64 vlog 2024.3_1 Compiler 2024.10 Oct 17 2024
-Start time: 07:34:30 on Aug 01,2025
+Start time: 03:39:23 on Aug 02,2025
 vlog -timescale 1ns/1ns -mfcu design.sv testbench.sv -work qrun.out/work -statslog qrun.out/stats_log -writesessionid "+qrun.out/top_dus" -csession=incr 
--- Compiling module data_mem0
 -- Compiling module TopLevel0
 -- Compiling module ALU
 -- Compiling module CTRL
 -- Compiling module data_mem
+-- Compiling module data_mem0
 -- Compiling module InstROM
 -- Compiling module LUT
 -- Compiling module ProgCtrl
@@ -18,48 +18,58 @@ vlog -timescale 1ns/1ns -mfcu design.sv testbench.sv -work qrun.out/work -statsl
 -- Compiling module new_int2flt_tb
 
 Top level modules:
-	data_mem0
+	ALU
+	CTRL
+	InstROM
+	LUT
+	ProgCtrl
+	RegFile
 	new_int2flt_tb
-End time: 07:34:30 on Aug 01,2025, Elapsed time: 0:00:00
+End time: 03:39:23 on Aug 02,2025, Elapsed time: 0:00:00
 Errors: 0, Warnings: 0
 QuestaSim-64 vopt 2024.3_1 Compiler 2024.10 Oct 17 2024
 ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
-Start time: 07:34:30 on Aug 01,2025
+Start time: 03:39:23 on Aug 02,2025
 vopt -access=rw+/. -timescale 1ns/1ns -mfcu "+acc=npr" -findtoplevels qrun.out/work+1+ -work qrun.out/work -statslog qrun.out/stats_log -csession=incr -o qrun_opt -csessionid=2 
 
 Top level modules:
-	data_mem0
+	ALU
+	CTRL
+	InstROM
+	LUT
+	ProgCtrl
+	RegFile
 	new_int2flt_tb
 
 Analyzing design...
--- Loading module data_mem0
+-- Loading module ALU
+-- Loading module CTRL
+-- Loading module InstROM
+-- Loading module LUT
+-- Loading module ProgCtrl
+-- Loading module RegFile
 -- Loading module new_int2flt_tb
 -- Loading module TopLevel
--- Loading module ProgCtrl
--- Loading module InstROM
--- Loading module CTRL
--- Loading module RegFile
--- Loading module ALU
 -- Loading module data_mem
--- Loading module LUT
 -- Loading module TopLevel0
-Optimizing 11 design-units (inlining 0/12 module instances):
+-- Loading module data_mem0
+Optimizing 11 design-units (inlining 0/11 module instances):
 -- Optimizing module new_int2flt_tb(fast)
+-- Optimizing module InstROM(fast)
 -- Optimizing module TopLevel(fast)
 -- Optimizing module TopLevel0(fast)
--- Optimizing module InstROM(fast)
 -- Optimizing module CTRL(fast)
 -- Optimizing module RegFile(fast)
 -- Optimizing module data_mem(fast)
 -- Optimizing module data_mem0(fast)
--- Optimizing module ProgCtrl(fast)
 -- Optimizing module ALU(fast)
 -- Optimizing module LUT(fast)
+-- Optimizing module ProgCtrl(fast)
 Optimized design name is qrun_opt
-End time: 07:34:31 on Aug 01,2025, Elapsed time: 0:00:01
+End time: 03:39:24 on Aug 02,2025, Elapsed time: 0:00:01
 Errors: 0, Warnings: 1
 # vsim -batch -lib qrun.out/work -do " run -all; exit" -statslog qrun.out/stats_log qrun_opt -appendlog -l qrun.log 
-# Start time: 07:34:31 on Aug 01,2025
+# Start time: 03:39:24 on Aug 02,2025
 # //  Questa Sim-64
 # //  Version 2024.3_1 linux_x86_64 Oct 17 2024
 # //
@@ -75,755 +85,108 @@ Errors: 0, Warnings: 1
 # // and may not be used in any way not expressly authorized by SISW.
 # //
 # Loading sv_std.std
-# Loading work.data_mem0(fast)
+# Loading work.ALU(fast)
+# Loading work.CTRL(fast)
+# Loading work.InstROM(fast)
+# Loading work.LUT(fast)
+# Loading work.ProgCtrl(fast)
+# Loading work.RegFile(fast)
 # Loading work.new_int2flt_tb(fast)
 # Loading work.TopLevel(fast)
-# Loading work.ProgCtrl(fast)
-# Loading work.InstROM(fast)
-# Loading work.CTRL(fast)
-# Loading work.RegFile(fast)
-# Loading work.ALU(fast)
 # Loading work.data_mem(fast)
-# Loading work.LUT(fast)
 # Loading work.TopLevel0(fast)
+# Loading work.data_mem0(fast)
 # 
 # run -all
 #  
-# Instruction = xxxxxxxxx, Opcode = xxx
-# Instruction = 100000000, Opcode = xxx
-# Cycle 0: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 00, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Instruction = 000001000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Cycle 1: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 00, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Instruction = 100000001, Opcode = xxx
-# Cycle 2: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 00, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Instruction = 100000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Cycle 3: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 00, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000001000, Opcode = xxx
-# Cycle 4: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 00, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Instruction = 100000001, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 02, Next PC = 00000003
-# Cycle 5: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 00, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000010000, Opcode = xxx
-# Cycle 6: PC = 03, Instruction = 010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 00, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
-# Instruction = 010011000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
-# Cycle 7: PC = 04, Instruction = 098, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 00, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Instruction = 011000001, Opcode = xxx
-# Cycle 8: PC = 05, Instruction = 0c1, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 00, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 05, Next PC = 00000006
-# Instruction = 111000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 06, Next PC = 00000007
-# Cycle 9: PC = 06, Instruction = 1c0, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 00, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Instruction = 001000010, Opcode = xxx
 # what's feeding the case 0000000000000000
-# IN=0x0000,  DUT=0xxxxx, REF=0x00xx, MATH=0x0000
-# Mismatch DUT vs REF: DUT=0xxxxx REF=0x00xx
-# Mismatch DUT vs MATH: DUT=0xxxxx MATH=0x0000
-# Scores so far: vs REF=0, vs MATH=0, tests=1
+# IN=0x0000,  DUT=0x0000, REF=0x0000, MATH=0x0000
+# Scores so far: vs REF=1, vs MATH=1, tests=1
 #  
-# Instruction = 100000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Cycle 0: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 00, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000001000, Opcode = xxx
-# Cycle 1: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 00, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Instruction = 100000001, Opcode = xxx
-# Cycle 2: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 00, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Instruction = 100000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Cycle 3: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 00, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000001000, Opcode = xxx
-# Cycle 4: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 00, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Instruction = 100000001, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 02, Next PC = 00000003
-# Cycle 5: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 00, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000010000, Opcode = xxx
-# Cycle 6: PC = 03, Instruction = 010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 00, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
-# Instruction = 010011000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
-# Cycle 7: PC = 04, Instruction = 098, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 00, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Instruction = 011000001, Opcode = xxx
-# Cycle 8: PC = 05, Instruction = 0c1, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 00, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 05, Next PC = 00000006
-# Instruction = 111000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 06, Next PC = 00000007
-# Cycle 9: PC = 06, Instruction = 1c0, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 00, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Instruction = 001000010, Opcode = xxx
 # what's feeding the case 1000000000000000
-# IN=0x8000,  DUT=0xxxxx, REF=0x00xx, MATH=0x8000
-# Mismatch DUT vs REF: DUT=0xxxxx REF=0x00xx
-# Mismatch DUT vs MATH: DUT=0xxxxx MATH=0x8000
-# Scores so far: vs REF=0, vs MATH=0, tests=2
+# IN=0x8000,  DUT=0x8000, REF=0x8000, MATH=0x8000
+# Scores so far: vs REF=2, vs MATH=2, tests=2
 #  
-# Instruction = 100000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Cycle 0: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 01, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000001000, Opcode = xxx
-# Cycle 1: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 01, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Instruction = 100000001, Opcode = xxx
-# Cycle 2: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 01, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Instruction = 100000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Cycle 3: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 01, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000001000, Opcode = xxx
-# Cycle 4: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 01, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Instruction = 100000001, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 02, Next PC = 00000003
-# Cycle 5: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 01, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000010000, Opcode = xxx
-# Cycle 6: PC = 03, Instruction = 010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 01, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
-# Instruction = 010011000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
-# Cycle 7: PC = 04, Instruction = 098, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 01, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Instruction = 011000001, Opcode = xxx
-# Cycle 8: PC = 05, Instruction = 0c1, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 01, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 05, Next PC = 00000006
-# Instruction = 111000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 06, Next PC = 00000007
-# Cycle 9: PC = 06, Instruction = 1c0, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 01, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Instruction = 001000010, Opcode = xxx
 # what's feeding the case 0000000000000001
-# IN=0x0001,  DUT=0xxxxx, REF=0x00xx, MATH=0x1c00
-# Mismatch DUT vs REF: DUT=0xxxxx REF=0x00xx
-# Mismatch DUT vs MATH: DUT=0xxxxx MATH=0x1c00
-# Scores so far: vs REF=0, vs MATH=0, tests=3
+# IN=0x0001,  DUT=0x1c00, REF=0x1c00, MATH=0x1c00
+# Scores so far: vs REF=3, vs MATH=3, tests=3
 #  
-# Instruction = 100000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Cycle 0: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 01, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000001000, Opcode = xxx
-# Cycle 1: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 01, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Instruction = 100000001, Opcode = xxx
-# Cycle 2: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 01, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Instruction = 100000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Cycle 3: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 01, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000001000, Opcode = xxx
-# Cycle 4: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 01, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Instruction = 100000001, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 02, Next PC = 00000003
-# Cycle 5: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 01, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000010000, Opcode = xxx
-# Cycle 6: PC = 03, Instruction = 010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 01, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
-# Instruction = 010011000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
-# Cycle 7: PC = 04, Instruction = 098, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 01, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Instruction = 011000001, Opcode = xxx
-# Cycle 8: PC = 05, Instruction = 0c1, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 01, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 05, Next PC = 00000006
-# Instruction = 111000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 06, Next PC = 00000007
-# Cycle 9: PC = 06, Instruction = 1c0, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 01, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Instruction = 001000010, Opcode = xxx
 # what's feeding the case 1000000000000001
-# IN=0x8001,  DUT=0xxxxx, REF=0x00xx, MATH=0x9c00
-# Mismatch DUT vs REF: DUT=0xxxxx REF=0x00xx
-# Mismatch DUT vs MATH: DUT=0xxxxx MATH=0x9c00
-# Scores so far: vs REF=0, vs MATH=0, tests=4
+# IN=0x8001,  DUT=0x9c00, REF=0x9c00, MATH=0x9c00
+# Scores so far: vs REF=4, vs MATH=4, tests=4
 #  
-# Instruction = 100000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Cycle 0: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 02, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000001000, Opcode = xxx
-# Cycle 1: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 02, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Instruction = 100000001, Opcode = xxx
-# Cycle 2: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 02, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Instruction = 100000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Cycle 3: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 02, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000001000, Opcode = xxx
-# Cycle 4: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 02, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Instruction = 100000001, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 02, Next PC = 00000003
-# Cycle 5: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 02, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000010000, Opcode = xxx
-# Cycle 6: PC = 03, Instruction = 010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 02, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
-# Instruction = 010011000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
-# Cycle 7: PC = 04, Instruction = 098, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 02, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Instruction = 011000001, Opcode = xxx
-# Cycle 8: PC = 05, Instruction = 0c1, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 02, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 05, Next PC = 00000006
-# Instruction = 111000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 06, Next PC = 00000007
-# Cycle 9: PC = 06, Instruction = 1c0, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 02, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Instruction = 001000010, Opcode = xxx
 # what's feeding the case 0000000000000010
-# IN=0x0002,  DUT=0xxxxx, REF=0x00xx, MATH=0x2000
-# Mismatch DUT vs REF: DUT=0xxxxx REF=0x00xx
-# Mismatch DUT vs MATH: DUT=0xxxxx MATH=0x2000
-# Scores so far: vs REF=0, vs MATH=0, tests=5
+# IN=0x0002,  DUT=0x2000, REF=0x2000, MATH=0x2000
+# Scores so far: vs REF=5, vs MATH=5, tests=5
 #  
-# Instruction = 100000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Cycle 0: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 02, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000001000, Opcode = xxx
-# Cycle 1: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 02, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Instruction = 100000001, Opcode = xxx
-# Cycle 2: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 02, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Instruction = 100000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Cycle 3: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 02, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000001000, Opcode = xxx
-# Cycle 4: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 02, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Instruction = 100000001, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 02, Next PC = 00000003
-# Cycle 5: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 02, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000010000, Opcode = xxx
-# Cycle 6: PC = 03, Instruction = 010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 02, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
-# Instruction = 010011000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
-# Cycle 7: PC = 04, Instruction = 098, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 02, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Instruction = 011000001, Opcode = xxx
-# Cycle 8: PC = 05, Instruction = 0c1, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 02, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 05, Next PC = 00000006
-# Instruction = 111000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 06, Next PC = 00000007
-# Cycle 9: PC = 06, Instruction = 1c0, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 02, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Instruction = 001000010, Opcode = xxx
 # what's feeding the case 1000000000000010
-# IN=0x8002,  DUT=0xxxxx, REF=0x00xx, MATH=0xa000
-# Mismatch DUT vs REF: DUT=0xxxxx REF=0x00xx
-# Mismatch DUT vs MATH: DUT=0xxxxx MATH=0xa000
-# Scores so far: vs REF=0, vs MATH=0, tests=6
+# IN=0x8002,  DUT=0xa000, REF=0xa000, MATH=0xa000
+# Scores so far: vs REF=6, vs MATH=6, tests=6
 #  
-# Instruction = 100000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Cycle 0: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 03, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000001000, Opcode = xxx
-# Cycle 1: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 03, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Instruction = 100000001, Opcode = xxx
-# Cycle 2: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 03, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Instruction = 100000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Cycle 3: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 03, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000001000, Opcode = xxx
-# Cycle 4: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 03, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Instruction = 100000001, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 02, Next PC = 00000003
-# Cycle 5: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 03, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000010000, Opcode = xxx
-# Cycle 6: PC = 03, Instruction = 010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 03, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
-# Instruction = 010011000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
-# Cycle 7: PC = 04, Instruction = 098, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 03, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Instruction = 011000001, Opcode = xxx
-# Cycle 8: PC = 05, Instruction = 0c1, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 03, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 05, Next PC = 00000006
-# Instruction = 111000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 06, Next PC = 00000007
-# Cycle 9: PC = 06, Instruction = 1c0, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 03, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Instruction = 001000010, Opcode = xxx
 # what's feeding the case 0000000000000011
-# IN=0x0003,  DUT=0xxxxx, REF=0x00xx, MATH=0x2200
-# Mismatch DUT vs REF: DUT=0xxxxx REF=0x00xx
-# Mismatch DUT vs MATH: DUT=0xxxxx MATH=0x2200
-# Scores so far: vs REF=0, vs MATH=0, tests=7
+# IN=0x0003,  DUT=0x2200, REF=0x2200, MATH=0x2200
+# Scores so far: vs REF=7, vs MATH=7, tests=7
 #  
-# Instruction = 100000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Cycle 0: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 03, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000001000, Opcode = xxx
-# Cycle 1: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 03, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Instruction = 100000001, Opcode = xxx
-# Cycle 2: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 03, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Instruction = 100000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Cycle 3: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 03, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000001000, Opcode = xxx
-# Cycle 4: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 03, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Instruction = 100000001, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 02, Next PC = 00000003
-# Cycle 5: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 03, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000010000, Opcode = xxx
-# Cycle 6: PC = 03, Instruction = 010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 03, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
-# Instruction = 010011000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
-# Cycle 7: PC = 04, Instruction = 098, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 03, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Instruction = 011000001, Opcode = xxx
-# Cycle 8: PC = 05, Instruction = 0c1, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 03, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 05, Next PC = 00000006
-# Instruction = 111000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 06, Next PC = 00000007
-# Cycle 9: PC = 06, Instruction = 1c0, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 03, Mem[1] = 80, Mem[2] = xx, Mem[3] = xx
-# Instruction = 001000010, Opcode = xxx
 # what's feeding the case 1000000000000011
-# IN=0x8003,  DUT=0xxxxx, REF=0x00xx, MATH=0xa200
-# Mismatch DUT vs REF: DUT=0xxxxx REF=0x00xx
-# Mismatch DUT vs MATH: DUT=0xxxxx MATH=0xa200
-# Scores so far: vs REF=0, vs MATH=0, tests=8
+# IN=0x8003,  DUT=0xa200, REF=0xa200, MATH=0xa200
+# Scores so far: vs REF=8, vs MATH=8, tests=8
 #  
-# Instruction = 100000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Cycle 0: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 0c, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000001000, Opcode = xxx
-# Cycle 1: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 0c, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Instruction = 100000001, Opcode = xxx
-# Cycle 2: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 0c, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Instruction = 100000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Cycle 3: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 0c, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000001000, Opcode = xxx
-# Cycle 4: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 0c, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Instruction = 100000001, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 02, Next PC = 00000003
-# Cycle 5: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 0c, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000010000, Opcode = xxx
-# Cycle 6: PC = 03, Instruction = 010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 0c, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
-# Instruction = 010011000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
-# Cycle 7: PC = 04, Instruction = 098, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 0c, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Instruction = 011000001, Opcode = xxx
-# Cycle 8: PC = 05, Instruction = 0c1, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 0c, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 05, Next PC = 00000006
-# Instruction = 111000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 06, Next PC = 00000007
-# Cycle 9: PC = 06, Instruction = 1c0, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 0c, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Instruction = 001000010, Opcode = xxx
 # what's feeding the case 0000000000001100
-# IN=0x000c,  DUT=0xxxxx, REF=0x00xx, MATH=0x2a00
-# Mismatch DUT vs REF: DUT=0xxxxx REF=0x00xx
-# Mismatch DUT vs MATH: DUT=0xxxxx MATH=0x2a00
-# Scores so far: vs REF=0, vs MATH=0, tests=9
+# IN=0x000c,  DUT=0x2a00, REF=0x2a00, MATH=0x2a00
+# Scores so far: vs REF=9, vs MATH=9, tests=9
 #  
-# Instruction = 100000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Cycle 0: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 30, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000001000, Opcode = xxx
-# Cycle 1: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 30, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Instruction = 100000001, Opcode = xxx
-# Cycle 2: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 30, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Instruction = 100000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Cycle 3: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 30, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000001000, Opcode = xxx
-# Cycle 4: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 30, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Instruction = 100000001, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 02, Next PC = 00000003
-# Cycle 5: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 30, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000010000, Opcode = xxx
-# Cycle 6: PC = 03, Instruction = 010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 30, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
-# Instruction = 010011000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
-# Cycle 7: PC = 04, Instruction = 098, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 30, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Instruction = 011000001, Opcode = xxx
-# Cycle 8: PC = 05, Instruction = 0c1, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 30, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 05, Next PC = 00000006
-# Instruction = 111000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 06, Next PC = 00000007
-# Cycle 9: PC = 06, Instruction = 1c0, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 30, Mem[1] = 00, Mem[2] = xx, Mem[3] = xx
-# Instruction = 001000010, Opcode = xxx
 # what's feeding the case 0000000000110000
-# IN=0x0030,  DUT=0xxxxx, REF=0x00xx, MATH=0x3200
-# Mismatch DUT vs REF: DUT=0xxxxx REF=0x00xx
-# Mismatch DUT vs MATH: DUT=0xxxxx MATH=0x3200
-# Scores so far: vs REF=0, vs MATH=0, tests=10
+# IN=0x0030,  DUT=0x3200, REF=0x3200, MATH=0x3200
+# Scores so far: vs REF=10, vs MATH=10, tests=10
 #  
-# Instruction = 100000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Cycle 0: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = ff, Mem[1] = 1f, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000001000, Opcode = xxx
-# Cycle 1: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = ff, Mem[1] = 1f, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Instruction = 100000001, Opcode = xxx
-# Cycle 2: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = ff, Mem[1] = 1f, Mem[2] = xx, Mem[3] = xx
-# Instruction = 100000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Cycle 3: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = ff, Mem[1] = 1f, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000001000, Opcode = xxx
-# Cycle 4: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = ff, Mem[1] = 1f, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Instruction = 100000001, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 02, Next PC = 00000003
-# Cycle 5: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = ff, Mem[1] = 1f, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000010000, Opcode = xxx
-# Cycle 6: PC = 03, Instruction = 010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = ff, Mem[1] = 1f, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
-# Instruction = 010011000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
-# Cycle 7: PC = 04, Instruction = 098, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = ff, Mem[1] = 1f, Mem[2] = xx, Mem[3] = xx
-# Instruction = 011000001, Opcode = xxx
-# Cycle 8: PC = 05, Instruction = 0c1, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = ff, Mem[1] = 1f, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 05, Next PC = 00000006
-# Instruction = 111000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 06, Next PC = 00000007
-# Cycle 9: PC = 06, Instruction = 1c0, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = ff, Mem[1] = 1f, Mem[2] = xx, Mem[3] = xx
-# Instruction = 001000010, Opcode = xxx
 # what's feeding the case 0001111111111111
-# IN=0x1fff,  DUT=0xxxxx, REF=0x00xx, MATH=0x4fff
-# Mismatch DUT vs REF: DUT=0xxxxx REF=0x00xx
-# Mismatch DUT vs MATH: DUT=0xxxxx MATH=0x4fff
-# Scores so far: vs REF=0, vs MATH=0, tests=11
+# IN=0x1fff,  DUT=0x4fff, REF=0x4fff, MATH=0x4fff
+# Scores so far: vs REF=11, vs MATH=11, tests=11
 #  
-# Instruction = 100000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Cycle 0: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = ff, Mem[1] = 3f, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000001000, Opcode = xxx
-# Cycle 1: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = ff, Mem[1] = 3f, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Instruction = 100000001, Opcode = xxx
-# Cycle 2: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = ff, Mem[1] = 3f, Mem[2] = xx, Mem[3] = xx
-# Instruction = 100000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Cycle 3: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = ff, Mem[1] = 3f, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000001000, Opcode = xxx
-# Cycle 4: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = ff, Mem[1] = 3f, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Instruction = 100000001, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 02, Next PC = 00000003
-# Cycle 5: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = ff, Mem[1] = 3f, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000010000, Opcode = xxx
-# Cycle 6: PC = 03, Instruction = 010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = ff, Mem[1] = 3f, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
-# Instruction = 010011000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
-# Cycle 7: PC = 04, Instruction = 098, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = ff, Mem[1] = 3f, Mem[2] = xx, Mem[3] = xx
-# Instruction = 011000001, Opcode = xxx
-# Cycle 8: PC = 05, Instruction = 0c1, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = ff, Mem[1] = 3f, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 05, Next PC = 00000006
-# Instruction = 111000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 06, Next PC = 00000007
-# Cycle 9: PC = 06, Instruction = 1c0, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = ff, Mem[1] = 3f, Mem[2] = xx, Mem[3] = xx
-# Instruction = 001000010, Opcode = xxx
 # what's feeding the case 0011111111111111
-# IN=0x3fff,  DUT=0xxxxx, REF=0x00xx, MATH=0x53ff
-# Mismatch DUT vs REF: DUT=0xxxxx REF=0x00xx
-# Mismatch DUT vs MATH: DUT=0xxxxx MATH=0x53ff
-# Scores so far: vs REF=0, vs MATH=0, tests=12
+# IN=0x3fff,  DUT=0x53ff, REF=0x53ff, MATH=0x53ff
+# Scores so far: vs REF=12, vs MATH=12, tests=12
 #  
-# Instruction = 100000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Cycle 0: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = ff, Mem[1] = 7f, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000001000, Opcode = xxx
-# Cycle 1: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = ff, Mem[1] = 7f, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Instruction = 100000001, Opcode = xxx
-# Cycle 2: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = ff, Mem[1] = 7f, Mem[2] = xx, Mem[3] = xx
-# Instruction = 100000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Cycle 3: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = ff, Mem[1] = 7f, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000001000, Opcode = xxx
-# Cycle 4: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = ff, Mem[1] = 7f, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Instruction = 100000001, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 02, Next PC = 00000003
-# Cycle 5: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = ff, Mem[1] = 7f, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000010000, Opcode = xxx
-# Cycle 6: PC = 03, Instruction = 010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = ff, Mem[1] = 7f, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
-# Instruction = 010011000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
-# Cycle 7: PC = 04, Instruction = 098, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = ff, Mem[1] = 7f, Mem[2] = xx, Mem[3] = xx
-# Instruction = 011000001, Opcode = xxx
-# Cycle 8: PC = 05, Instruction = 0c1, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = ff, Mem[1] = 7f, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 05, Next PC = 00000006
-# Instruction = 111000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 06, Next PC = 00000007
-# Cycle 9: PC = 06, Instruction = 1c0, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = ff, Mem[1] = 7f, Mem[2] = xx, Mem[3] = xx
-# Instruction = 001000010, Opcode = xxx
 # what's feeding the case 0111111111111111
-# IN=0x7fff,  DUT=0xxxxx, REF=0x00xx, MATH=0x57ff
-# Mismatch DUT vs REF: DUT=0xxxxx REF=0x00xx
-# Mismatch DUT vs MATH: DUT=0xxxxx MATH=0x57ff
-# Scores so far: vs REF=0, vs MATH=0, tests=13
+# IN=0x7fff,  DUT=0x57ff, REF=0x57ff, MATH=0x57ff
+# Scores so far: vs REF=13, vs MATH=13, tests=13
 #  
-# Instruction = 100000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Cycle 0: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = ff, Mem[1] = ff, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000001000, Opcode = xxx
-# Cycle 1: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = ff, Mem[1] = ff, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Instruction = 100000001, Opcode = xxx
-# Cycle 2: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = ff, Mem[1] = ff, Mem[2] = xx, Mem[3] = xx
-# Instruction = 100000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Cycle 3: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = ff, Mem[1] = ff, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000001000, Opcode = xxx
-# Cycle 4: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = ff, Mem[1] = ff, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Instruction = 100000001, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 02, Next PC = 00000003
-# Cycle 5: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = ff, Mem[1] = ff, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000010000, Opcode = xxx
-# Cycle 6: PC = 03, Instruction = 010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = ff, Mem[1] = ff, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
-# Instruction = 010011000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
-# Cycle 7: PC = 04, Instruction = 098, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = ff, Mem[1] = ff, Mem[2] = xx, Mem[3] = xx
-# Instruction = 011000001, Opcode = xxx
-# Cycle 8: PC = 05, Instruction = 0c1, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = ff, Mem[1] = ff, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 05, Next PC = 00000006
-# Instruction = 111000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 06, Next PC = 00000007
-# Cycle 9: PC = 06, Instruction = 1c0, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = ff, Mem[1] = ff, Mem[2] = xx, Mem[3] = xx
-# Instruction = 001000010, Opcode = xxx
 # what's feeding the case 1111111111111111
-# IN=0xffff,  DUT=0xxxxx, REF=0x00xx, MATH=0xd7ff
-# Mismatch DUT vs REF: DUT=0xxxxx REF=0x00xx
-# Mismatch DUT vs MATH: DUT=0xxxxx MATH=0xd7ff
-# Scores so far: vs REF=0, vs MATH=0, tests=14
+# IN=0xffff,  DUT=0xd7ff, REF=0xd7ff, MATH=0xd7ff
+# Scores so far: vs REF=14, vs MATH=14, tests=14
 #  
-# Instruction = 100000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Cycle 0: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 00, Mem[1] = c0, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000001000, Opcode = xxx
-# Cycle 1: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 00, Mem[1] = c0, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Instruction = 100000001, Opcode = xxx
-# Cycle 2: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 00, Mem[1] = c0, Mem[2] = xx, Mem[3] = xx
-# Instruction = 100000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Cycle 3: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 00, Mem[1] = c0, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000001000, Opcode = xxx
-# Cycle 4: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 00, Mem[1] = c0, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Instruction = 100000001, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 02, Next PC = 00000003
-# Cycle 5: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 00, Mem[1] = c0, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000010000, Opcode = xxx
-# Cycle 6: PC = 03, Instruction = 010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 00, Mem[1] = c0, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
-# Instruction = 010011000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
-# Cycle 7: PC = 04, Instruction = 098, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 00, Mem[1] = c0, Mem[2] = xx, Mem[3] = xx
-# Instruction = 011000001, Opcode = xxx
-# Cycle 8: PC = 05, Instruction = 0c1, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 00, Mem[1] = c0, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 05, Next PC = 00000006
-# Instruction = 111000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 06, Next PC = 00000007
-# Cycle 9: PC = 06, Instruction = 1c0, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 00, Mem[1] = c0, Mem[2] = xx, Mem[3] = xx
-# Instruction = 001000010, Opcode = xxx
 # what's feeding the case 1100000000000000
-# IN=0xc000,  DUT=0xxxxx, REF=0x00xx, MATH=0xd400
-# Mismatch DUT vs REF: DUT=0xxxxx REF=0x00xx
-# Mismatch DUT vs MATH: DUT=0xxxxx MATH=0xd400
-# Scores so far: vs REF=0, vs MATH=0, tests=15
+# IN=0xc000,  DUT=0xd400, REF=0xd400, MATH=0xd400
+# Scores so far: vs REF=15, vs MATH=15, tests=15
 #  
-# Instruction = 100000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Cycle 0: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 00, Mem[1] = 40, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000001000, Opcode = xxx
-# Cycle 1: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 00, Mem[1] = 40, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Instruction = 100000001, Opcode = xxx
-# Cycle 2: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 00, Mem[1] = 40, Mem[2] = xx, Mem[3] = xx
-# Instruction = 100000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Cycle 3: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 00, Mem[1] = 40, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000001000, Opcode = xxx
-# Cycle 4: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 00, Mem[1] = 40, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Instruction = 100000001, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 02, Next PC = 00000003
-# Cycle 5: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 00, Mem[1] = 40, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000010000, Opcode = xxx
-# Cycle 6: PC = 03, Instruction = 010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 00, Mem[1] = 40, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
-# Instruction = 010011000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
-# Cycle 7: PC = 04, Instruction = 098, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 00, Mem[1] = 40, Mem[2] = xx, Mem[3] = xx
-# Instruction = 011000001, Opcode = xxx
-# Cycle 8: PC = 05, Instruction = 0c1, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 00, Mem[1] = 40, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 05, Next PC = 00000006
-# Instruction = 111000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 06, Next PC = 00000007
-# Cycle 9: PC = 06, Instruction = 1c0, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 00, Mem[1] = 40, Mem[2] = xx, Mem[3] = xx
-# Instruction = 001000010, Opcode = xxx
 # what's feeding the case 0100000000000000
-# IN=0x4000,  DUT=0xxxxx, REF=0x00xx, MATH=0x5400
-# Mismatch DUT vs REF: DUT=0xxxxx REF=0x00xx
-# Mismatch DUT vs MATH: DUT=0xxxxx MATH=0x5400
-# Scores so far: vs REF=0, vs MATH=0, tests=16
+# IN=0x4000,  DUT=0x5400, REF=0x5400, MATH=0x5400
+# Scores so far: vs REF=16, vs MATH=16, tests=16
 #  
-# Instruction = 100000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Cycle 0: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 24, Mem[1] = 35, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000001000, Opcode = xxx
-# Cycle 1: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 24, Mem[1] = 35, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Instruction = 100000001, Opcode = xxx
-# Cycle 2: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 24, Mem[1] = 35, Mem[2] = xx, Mem[3] = xx
-# Instruction = 100000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Cycle 3: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 24, Mem[1] = 35, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000001000, Opcode = xxx
-# Cycle 4: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 24, Mem[1] = 35, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Instruction = 100000001, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 02, Next PC = 00000003
-# Cycle 5: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 24, Mem[1] = 35, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000010000, Opcode = xxx
-# Cycle 6: PC = 03, Instruction = 010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 24, Mem[1] = 35, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
-# Instruction = 010011000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
-# Cycle 7: PC = 04, Instruction = 098, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 24, Mem[1] = 35, Mem[2] = xx, Mem[3] = xx
-# Instruction = 011000001, Opcode = xxx
-# Cycle 8: PC = 05, Instruction = 0c1, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 24, Mem[1] = 35, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 05, Next PC = 00000006
-# Instruction = 111000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 06, Next PC = 00000007
-# Cycle 9: PC = 06, Instruction = 1c0, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 24, Mem[1] = 35, Mem[2] = xx, Mem[3] = xx
-# Instruction = 001000010, Opcode = xxx
 # what's feeding the case 0011010100100100
-# IN=0x3524,  DUT=0xxxxx, REF=0x00xx, MATH=0x52a4
-# Mismatch DUT vs REF: DUT=0xxxxx REF=0x00xx
-# Mismatch DUT vs MATH: DUT=0xxxxx MATH=0x52a4
-# Scores so far: vs REF=0, vs MATH=0, tests=17
+# IN=0x3524,  DUT=0x52a4, REF=0x52a4, MATH=0x52a4
+# Scores so far: vs REF=17, vs MATH=17, tests=17
 #  
-# Instruction = 100000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Cycle 0: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 81, Mem[1] = 5e, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000001000, Opcode = xxx
-# Cycle 1: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 81, Mem[1] = 5e, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Instruction = 100000001, Opcode = xxx
-# Cycle 2: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 81, Mem[1] = 5e, Mem[2] = xx, Mem[3] = xx
-# Instruction = 100000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Cycle 3: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 81, Mem[1] = 5e, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000001000, Opcode = xxx
-# Cycle 4: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 81, Mem[1] = 5e, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Instruction = 100000001, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 02, Next PC = 00000003
-# Cycle 5: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 81, Mem[1] = 5e, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000010000, Opcode = xxx
-# Cycle 6: PC = 03, Instruction = 010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 81, Mem[1] = 5e, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
-# Instruction = 010011000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
-# Cycle 7: PC = 04, Instruction = 098, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 81, Mem[1] = 5e, Mem[2] = xx, Mem[3] = xx
-# Instruction = 011000001, Opcode = xxx
-# Cycle 8: PC = 05, Instruction = 0c1, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 81, Mem[1] = 5e, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 05, Next PC = 00000006
-# Instruction = 111000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 06, Next PC = 00000007
-# Cycle 9: PC = 06, Instruction = 1c0, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 81, Mem[1] = 5e, Mem[2] = xx, Mem[3] = xx
-# Instruction = 001000010, Opcode = xxx
 # what's feeding the case 0101111010000001
-# IN=0x5e81,  DUT=0xxxxx, REF=0x00xx, MATH=0x55e8
-# Mismatch DUT vs REF: DUT=0xxxxx REF=0x00xx
-# Mismatch DUT vs MATH: DUT=0xxxxx MATH=0x55e8
-# Scores so far: vs REF=0, vs MATH=0, tests=18
+# IN=0x5e81,  DUT=0x55e8, REF=0x55e8, MATH=0x55e8
+# Scores so far: vs REF=18, vs MATH=18, tests=18
 #  
-# Instruction = 100000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Cycle 0: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 09, Mem[1] = d6, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000001000, Opcode = xxx
-# Cycle 1: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 09, Mem[1] = d6, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Instruction = 100000001, Opcode = xxx
-# Cycle 2: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 09, Mem[1] = d6, Mem[2] = xx, Mem[3] = xx
-# Instruction = 100000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Cycle 3: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 09, Mem[1] = d6, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000001000, Opcode = xxx
-# Cycle 4: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 09, Mem[1] = d6, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Instruction = 100000001, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 02, Next PC = 00000003
-# Cycle 5: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 09, Mem[1] = d6, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000010000, Opcode = xxx
-# Cycle 6: PC = 03, Instruction = 010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 09, Mem[1] = d6, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
-# Instruction = 010011000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
-# Cycle 7: PC = 04, Instruction = 098, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 09, Mem[1] = d6, Mem[2] = xx, Mem[3] = xx
-# Instruction = 011000001, Opcode = xxx
-# Cycle 8: PC = 05, Instruction = 0c1, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 09, Mem[1] = d6, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 05, Next PC = 00000006
-# Instruction = 111000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 06, Next PC = 00000007
-# Cycle 9: PC = 06, Instruction = 1c0, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 09, Mem[1] = d6, Mem[2] = xx, Mem[3] = xx
-# Instruction = 001000010, Opcode = xxx
 # what's feeding the case 1101011000001001
-# IN=0xd609,  DUT=0xxxxx, REF=0x00xx, MATH=0xd560
-# Mismatch DUT vs REF: DUT=0xxxxx REF=0x00xx
-# Mismatch DUT vs MATH: DUT=0xxxxx MATH=0xd560
-# Scores so far: vs REF=0, vs MATH=0, tests=19
+# IN=0xd609,  DUT=0xd560, REF=0xd560, MATH=0xd560
+# Scores so far: vs REF=19, vs MATH=19, tests=19
 #  
-# Instruction = 100000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Cycle 0: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 63, Mem[1] = 56, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000001000, Opcode = xxx
-# Cycle 1: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 63, Mem[1] = 56, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Instruction = 100000001, Opcode = xxx
-# Cycle 2: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 63, Mem[1] = 56, Mem[2] = xx, Mem[3] = xx
-# Instruction = 100000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 00, Next PC = 00000001
-# Cycle 3: PC = 00, Instruction = 100, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 63, Mem[1] = 56, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000001000, Opcode = xxx
-# Cycle 4: PC = 01, Instruction = 008, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 63, Mem[1] = 56, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 01, Next PC = 00000002
-# Instruction = 100000001, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 02, Next PC = 00000003
-# Cycle 5: PC = 02, Instruction = 101, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 63, Mem[1] = 56, Mem[2] = xx, Mem[3] = xx
-# Instruction = 000010000, Opcode = xxx
-# Cycle 6: PC = 03, Instruction = 010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 63, Mem[1] = 56, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 03, Next PC = 00000004
-# Instruction = 010011000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 00, Current PC = 04, Next PC = 00000005
-# Cycle 7: PC = 04, Instruction = 098, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 00, Mem[0] = 63, Mem[1] = 56, Mem[2] = xx, Mem[3] = xx
-# Instruction = 011000001, Opcode = xxx
-# Cycle 8: PC = 05, Instruction = 0c1, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 63, Mem[1] = 56, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 05, Next PC = 00000006
-# Instruction = 111000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 06, Next PC = 00000007
-# Cycle 9: PC = 06, Instruction = 1c0, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 63, Mem[1] = 56, Mem[2] = xx, Mem[3] = xx
-# Instruction = 001000010, Opcode = xxx
 # what's feeding the case 0101011001100011
-# IN=0x5663,  DUT=0xxxxx, REF=0x00xx, MATH=0x5566
-# Mismatch DUT vs REF: DUT=0xxxxx REF=0x00xx
-# Mismatch DUT vs MATH: DUT=0xxxxx MATH=0x5566
-# Scores so far: vs REF=0, vs MATH=0, tests=20
-# Cycle 10: PC = 07, Instruction = 042, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 12, Mem[0] = 63, Mem[1] = 56, Mem[2] = xx, Mem[3] = xx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 12, Current PC = 07, Next PC = 00000008
-# Instruction = 111000000, Opcode = xxx
-# Cycle: Branch = 0, Branch_conditional = 0, Zero = 1, Target = 0f, Current PC = 08, Next PC = 00000009
-# Cycle 11: PC = 08, Instruction = 1c0, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00 (exp), R5 = 00 (counter), Zero = 1, ALU_out = 00, branch = 0, branch_conditional = 0, target = 0f, Mem[0] = 63, Mem[1] = 56, Mem[2] = xx, Mem[3] = xx
-# Instruction = 001000010, Opcode = xxx
-# scores =           0           0 out of          20
+# IN=0x5663,  DUT=0x5566, REF=0x5566, MATH=0x5566
+# Scores so far: vs REF=20, vs MATH=20, tests=20
+# scores =          20          20 out of          20
 # ** Note: $stop    : new_fix2flt_tb.sv(92)
-#    Time: 2225 ns  Iteration: 0  Instance: /new_int2flt_tb
+#    Time: 401025 ns  Iteration: 0  Instance: /new_int2flt_tb
 # Break in Module new_int2flt_tb at new_fix2flt_tb.sv line 92
 # Stopped at new_fix2flt_tb.sv line 92
 # exit
-# End time: 07:34:33 on Aug 01,2025, Elapsed time: 0:00:02
+# End time: 03:39:25 on Aug 02,2025, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
-End time: 07:34:33 on Aug 01,2025, Elapsed time: 0:00:03
+End time: 03:39:25 on Aug 02,2025, Elapsed time: 0:00:02
 *** Summary *********************************************
     qrun: Errors:   0, Warnings:   0
     vlog: Errors:   0, Warnings:   0

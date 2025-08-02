@@ -81,6 +81,12 @@ module TopLevel (
 
   assign reg_data_in = mem_read ? mem_out : alu_out;
 
+  // Initialize memory for exponent and counter
+  initial begin
+    data_mem1.mem_core[4] = 8'h15; // Exponent = 21
+    data_mem1.mem_core[5] = 8'h0F; // Counter = 15
+  end
+
   always_ff @(posedge clk) begin
     if (reset) begin
       start_q <= 1'b0;
@@ -91,24 +97,26 @@ module TopLevel (
       start_q <= start;
       cycle_ctr <= cycle_ctr + 1;
       prev_PC <= PC;
-      if ((instruction[8:6] == 3'b111 && instruction[5:0] == 6'b0 && !done) ||
-          (PC == prev_PC && !done)) begin
+      // Assert done only on BRZ 2 at PC 18 or 30, after memory writes
+      if ((instruction[8:6] == 3'b111 && instruction[5:0] == 6'b000010 && (PC == 7'h12 || PC == 7'h1E)) && !done) begin
         done <= 1'b1;
       end else begin
         done <= 1'b0;
       end
       if (cycle_ctr == 12'd2000) begin
-        $display("Timeout: Infinite loop detected at PC = %h, instruction = %b", PC, instruction);
+//        $display("Timeout: Infinite loop detected at PC = %h, instruction = %b", PC, instruction);
         $finish;
       end
     end
   end
 
+  // Debugging output
   always @(posedge clk) begin
     if (!reset) begin
-      $display("Cycle %0d: PC = %h, Instruction = %h, R0 = %h, R1 = %h, R2 = %h, R3 = %h, R4 = %h (exp), R5 = %h (counter), Zero = %b, ALU_out = %h, branch = %b, branch_conditional = %b, target = %h, Mem[0] = %h, Mem[1] = %h, Mem[2] = %h, Mem[3] = %h",
-               cycle_ctr, PC, instruction, reg_file.regs[0], reg_file.regs[1], reg_file.regs[2], reg_file.regs[3], reg_file.regs[4], reg_file.regs[5], zero, alu_out, branch, branch_conditional, branch_target,
-               data_mem1.mem_core[0], data_mem1.mem_core[1], data_mem1.mem_core[2], data_mem1.mem_core[3]);
+//      $display("Cycle %0d: PC=%h, Instruction=%b, R0=%h, R1=%h, R2=%h, R3=%h, R4=%h, R5=%h, Zero=%b, ALU_out=%h, Branch=%b, Branch_conditional=%b, Target=%h, Mem[0]=%h, Mem[1]=%h, Mem[2]=%h, Mem[3]=%h, Done=%b, MemWrite=%b, DataIn=%h",
+               cycle_ctr, PC, instruction, reg_file.regs[0], reg_file.regs[1], reg_file.regs[2], reg_file.regs[3],
+               reg_file.regs[4], reg_file.regs[5], zero, alu_out, branch, branch_conditional, branch_target,
+               data_mem1.mem_core[0], data_mem1.mem_core[1], data_mem1.mem_core[2], data_mem1.mem_core[3], done, mem_write, reg_out_rd);
     end
   end
 endmodule

@@ -4,9 +4,12 @@ module ProgCtrl (
   output logic [6:0] PC
 );
   always_ff @(posedge clk) begin
-    if (!reset) $display("Cycle: Branch = %b, Branch_conditional = %b, Zero = %b, Target = %h, Current PC = %h, Next PC = %h", branch, branch_conditional, zero, target, PC, (branch && (!branch_conditional || zero)) ? target : PC + 1);
-    if (reset) PC <= 7'b0;
-    else if (branch && (!branch_conditional || zero)) PC <= target;
-    else PC <= PC + 1;
+    if (reset) begin
+      PC <= 7'h00; // Initialize PC on reset
+    end else if (branch && (!branch_conditional || zero)) begin
+      PC <= target; // Take branch if unconditional or conditional and zero
+    end else begin
+      PC <= PC + 7'h01; // Increment PC
+    end
   end
 endmodule

@@ -1,75 +1,60 @@
 QuestaSim-64 qrun 2024.3_1 Utility 2024.10 Oct 17 2024
-Start time: 03:39:23 on Aug 02,2025
+Start time: 01:19:12 on Aug 04,2025
 qrun -batch -access=rw+/. -timescale 1ns/1ns -mfcu design.sv testbench.sv -voptargs="+acc=npr" -do " run -all; exit" 
 Creating library 'qrun.out/work'.
 QuestaSim-64 vlog 2024.3_1 Compiler 2024.10 Oct 17 2024
-Start time: 03:39:23 on Aug 02,2025
+Start time: 01:19:12 on Aug 04,2025
 vlog -timescale 1ns/1ns -mfcu design.sv testbench.sv -work qrun.out/work -statslog qrun.out/stats_log -writesessionid "+qrun.out/top_dus" -csession=incr 
--- Compiling module TopLevel0
--- Compiling module ALU
--- Compiling module CTRL
 -- Compiling module data_mem
 -- Compiling module data_mem0
+-- Compiling module TopLevel
+-- Compiling module ALU
+-- Compiling module CTRL
 -- Compiling module InstROM
--- Compiling module LUT
 -- Compiling module ProgCtrl
 -- Compiling module RegFile
--- Compiling module TopLevel
+-- Compiling module TopLevel0
 -- Compiling module new_int2flt_tb
 
 Top level modules:
-	ALU
-	CTRL
-	InstROM
-	LUT
-	ProgCtrl
-	RegFile
 	new_int2flt_tb
-End time: 03:39:23 on Aug 02,2025, Elapsed time: 0:00:00
+End time: 01:19:12 on Aug 04,2025, Elapsed time: 0:00:00
 Errors: 0, Warnings: 0
 QuestaSim-64 vopt 2024.3_1 Compiler 2024.10 Oct 17 2024
 ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
-Start time: 03:39:23 on Aug 02,2025
+Start time: 01:19:12 on Aug 04,2025
 vopt -access=rw+/. -timescale 1ns/1ns -mfcu "+acc=npr" -findtoplevels qrun.out/work+1+ -work qrun.out/work -statslog qrun.out/stats_log -csession=incr -o qrun_opt -csessionid=2 
 
 Top level modules:
-	ALU
-	CTRL
-	InstROM
-	LUT
-	ProgCtrl
-	RegFile
 	new_int2flt_tb
 
 Analyzing design...
--- Loading module ALU
--- Loading module CTRL
--- Loading module InstROM
--- Loading module LUT
--- Loading module ProgCtrl
--- Loading module RegFile
 -- Loading module new_int2flt_tb
 -- Loading module TopLevel
+-- Loading module InstROM
+-- Loading module CTRL
+-- Loading module RegFile
+-- Loading module ALU
 -- Loading module data_mem
+-- Loading module ProgCtrl
 -- Loading module TopLevel0
 -- Loading module data_mem0
-Optimizing 11 design-units (inlining 0/11 module instances):
+Optimizing 10 design-units (inlining 0/10 module instances):
 -- Optimizing module new_int2flt_tb(fast)
--- Optimizing module InstROM(fast)
 -- Optimizing module TopLevel(fast)
 -- Optimizing module TopLevel0(fast)
 -- Optimizing module CTRL(fast)
 -- Optimizing module RegFile(fast)
--- Optimizing module data_mem(fast)
 -- Optimizing module data_mem0(fast)
 -- Optimizing module ALU(fast)
--- Optimizing module LUT(fast)
+-- Optimizing module data_mem(fast)
 -- Optimizing module ProgCtrl(fast)
+-- Optimizing module InstROM(fast)
 Optimized design name is qrun_opt
-End time: 03:39:24 on Aug 02,2025, Elapsed time: 0:00:01
+End time: 01:19:13 on Aug 04,2025, Elapsed time: 0:00:01
 Errors: 0, Warnings: 1
 # vsim -batch -lib qrun.out/work -do " run -all; exit" -statslog qrun.out/stats_log qrun_opt -appendlog -l qrun.log 
-# Start time: 03:39:24 on Aug 02,2025
+# Start time: 01:19:13 on Aug 04,2025
 # //  Questa Sim-64
 # //  Version 2024.3_1 linux_x86_64 Oct 17 2024
 # //
@@ -85,15 +70,14 @@ Errors: 0, Warnings: 1
 # // and may not be used in any way not expressly authorized by SISW.
 # //
 # Loading sv_std.std
-# Loading work.ALU(fast)
-# Loading work.CTRL(fast)
-# Loading work.InstROM(fast)
-# Loading work.LUT(fast)
-# Loading work.ProgCtrl(fast)
-# Loading work.RegFile(fast)
 # Loading work.new_int2flt_tb(fast)
 # Loading work.TopLevel(fast)
+# Loading work.InstROM(fast)
+# Loading work.CTRL(fast)
+# Loading work.RegFile(fast)
+# Loading work.ALU(fast)
 # Loading work.data_mem(fast)
+# Loading work.ProgCtrl(fast)
 # Loading work.TopLevel0(fast)
 # Loading work.data_mem0(fast)
 # 
@@ -108,85 +92,121 @@ Errors: 0, Warnings: 1
 # Scores so far: vs REF=2, vs MATH=2, tests=2
 #  
 # what's feeding the case 0000000000000001
-# IN=0x0001,  DUT=0x1c00, REF=0x1c00, MATH=0x1c00
-# Scores so far: vs REF=3, vs MATH=3, tests=3
+# IN=0x0001,  DUT=0x0001, REF=0x1c00, MATH=0x1c00
+# Mismatch DUT vs REF: DUT=0x0001 REF=0x1c00
+# Mismatch DUT vs MATH: DUT=0x0001 MATH=0x1c00
+# Scores so far: vs REF=2, vs MATH=2, tests=3
 #  
 # what's feeding the case 1000000000000001
-# IN=0x8001,  DUT=0x9c00, REF=0x9c00, MATH=0x9c00
-# Scores so far: vs REF=4, vs MATH=4, tests=4
+# IN=0x8001,  DUT=0x8001, REF=0x9c00, MATH=0x9c00
+# Mismatch DUT vs REF: DUT=0x8001 REF=0x9c00
+# Mismatch DUT vs MATH: DUT=0x8001 MATH=0x9c00
+# Scores so far: vs REF=2, vs MATH=2, tests=4
 #  
 # what's feeding the case 0000000000000010
-# IN=0x0002,  DUT=0x2000, REF=0x2000, MATH=0x2000
-# Scores so far: vs REF=5, vs MATH=5, tests=5
+# IN=0x0002,  DUT=0x0002, REF=0x2000, MATH=0x2000
+# Mismatch DUT vs REF: DUT=0x0002 REF=0x2000
+# Mismatch DUT vs MATH: DUT=0x0002 MATH=0x2000
+# Scores so far: vs REF=2, vs MATH=2, tests=5
 #  
 # what's feeding the case 1000000000000010
-# IN=0x8002,  DUT=0xa000, REF=0xa000, MATH=0xa000
-# Scores so far: vs REF=6, vs MATH=6, tests=6
+# IN=0x8002,  DUT=0x8002, REF=0xa000, MATH=0xa000
+# Mismatch DUT vs REF: DUT=0x8002 REF=0xa000
+# Mismatch DUT vs MATH: DUT=0x8002 MATH=0xa000
+# Scores so far: vs REF=2, vs MATH=2, tests=6
 #  
 # what's feeding the case 0000000000000011
-# IN=0x0003,  DUT=0x2200, REF=0x2200, MATH=0x2200
-# Scores so far: vs REF=7, vs MATH=7, tests=7
+# IN=0x0003,  DUT=0x0003, REF=0x2200, MATH=0x2200
+# Mismatch DUT vs REF: DUT=0x0003 REF=0x2200
+# Mismatch DUT vs MATH: DUT=0x0003 MATH=0x2200
+# Scores so far: vs REF=2, vs MATH=2, tests=7
 #  
 # what's feeding the case 1000000000000011
-# IN=0x8003,  DUT=0xa200, REF=0xa200, MATH=0xa200
-# Scores so far: vs REF=8, vs MATH=8, tests=8
+# IN=0x8003,  DUT=0x8003, REF=0xa200, MATH=0xa200
+# Mismatch DUT vs REF: DUT=0x8003 REF=0xa200
+# Mismatch DUT vs MATH: DUT=0x8003 MATH=0xa200
+# Scores so far: vs REF=2, vs MATH=2, tests=8
 #  
 # what's feeding the case 0000000000001100
-# IN=0x000c,  DUT=0x2a00, REF=0x2a00, MATH=0x2a00
-# Scores so far: vs REF=9, vs MATH=9, tests=9
+# IN=0x000c,  DUT=0x000c, REF=0x2a00, MATH=0x2a00
+# Mismatch DUT vs REF: DUT=0x000c REF=0x2a00
+# Mismatch DUT vs MATH: DUT=0x000c MATH=0x2a00
+# Scores so far: vs REF=2, vs MATH=2, tests=9
 #  
 # what's feeding the case 0000000000110000
-# IN=0x0030,  DUT=0x3200, REF=0x3200, MATH=0x3200
-# Scores so far: vs REF=10, vs MATH=10, tests=10
+# IN=0x0030,  DUT=0x0030, REF=0x3200, MATH=0x3200
+# Mismatch DUT vs REF: DUT=0x0030 REF=0x3200
+# Mismatch DUT vs MATH: DUT=0x0030 MATH=0x3200
+# Scores so far: vs REF=2, vs MATH=2, tests=10
 #  
 # what's feeding the case 0001111111111111
-# IN=0x1fff,  DUT=0x4fff, REF=0x4fff, MATH=0x4fff
-# Scores so far: vs REF=11, vs MATH=11, tests=11
+# IN=0x1fff,  DUT=0x00ff, REF=0x4fff, MATH=0x4fff
+# Mismatch DUT vs REF: DUT=0x00ff REF=0x4fff
+# Mismatch DUT vs MATH: DUT=0x00ff MATH=0x4fff
+# Scores so far: vs REF=2, vs MATH=2, tests=11
 #  
 # what's feeding the case 0011111111111111
-# IN=0x3fff,  DUT=0x53ff, REF=0x53ff, MATH=0x53ff
-# Scores so far: vs REF=12, vs MATH=12, tests=12
+# IN=0x3fff,  DUT=0x00ff, REF=0x53ff, MATH=0x53ff
+# Mismatch DUT vs REF: DUT=0x00ff REF=0x53ff
+# Mismatch DUT vs MATH: DUT=0x00ff MATH=0x53ff
+# Scores so far: vs REF=2, vs MATH=2, tests=12
 #  
 # what's feeding the case 0111111111111111
-# IN=0x7fff,  DUT=0x57ff, REF=0x57ff, MATH=0x57ff
-# Scores so far: vs REF=13, vs MATH=13, tests=13
+# IN=0x7fff,  DUT=0x00ff, REF=0x57ff, MATH=0x57ff
+# Mismatch DUT vs REF: DUT=0x00ff REF=0x57ff
+# Mismatch DUT vs MATH: DUT=0x00ff MATH=0x57ff
+# Scores so far: vs REF=2, vs MATH=2, tests=13
 #  
 # what's feeding the case 1111111111111111
-# IN=0xffff,  DUT=0xd7ff, REF=0xd7ff, MATH=0xd7ff
-# Scores so far: vs REF=14, vs MATH=14, tests=14
+# IN=0xffff,  DUT=0x80ff, REF=0xd7ff, MATH=0xd7ff
+# Mismatch DUT vs REF: DUT=0x80ff REF=0xd7ff
+# Mismatch DUT vs MATH: DUT=0x80ff MATH=0xd7ff
+# Scores so far: vs REF=2, vs MATH=2, tests=14
 #  
 # what's feeding the case 1100000000000000
-# IN=0xc000,  DUT=0xd400, REF=0xd400, MATH=0xd400
-# Scores so far: vs REF=15, vs MATH=15, tests=15
+# IN=0xc000,  DUT=0x8000, REF=0xd400, MATH=0xd400
+# Mismatch DUT vs REF: DUT=0x8000 REF=0xd400
+# Mismatch DUT vs MATH: DUT=0x8000 MATH=0xd400
+# Scores so far: vs REF=2, vs MATH=2, tests=15
 #  
 # what's feeding the case 0100000000000000
-# IN=0x4000,  DUT=0x5400, REF=0x5400, MATH=0x5400
-# Scores so far: vs REF=16, vs MATH=16, tests=16
+# IN=0x4000,  DUT=0x0000, REF=0x5400, MATH=0x5400
+# Mismatch DUT vs REF: DUT=0x0000 REF=0x5400
+# Mismatch DUT vs MATH: DUT=0x0000 MATH=0x5400
+# Scores so far: vs REF=2, vs MATH=2, tests=16
 #  
 # what's feeding the case 0011010100100100
-# IN=0x3524,  DUT=0x52a4, REF=0x52a4, MATH=0x52a4
-# Scores so far: vs REF=17, vs MATH=17, tests=17
+# IN=0x3524,  DUT=0x0024, REF=0x52a4, MATH=0x52a4
+# Mismatch DUT vs REF: DUT=0x0024 REF=0x52a4
+# Mismatch DUT vs MATH: DUT=0x0024 MATH=0x52a4
+# Scores so far: vs REF=2, vs MATH=2, tests=17
 #  
 # what's feeding the case 0101111010000001
-# IN=0x5e81,  DUT=0x55e8, REF=0x55e8, MATH=0x55e8
-# Scores so far: vs REF=18, vs MATH=18, tests=18
+# IN=0x5e81,  DUT=0x0081, REF=0x55e8, MATH=0x55e8
+# Mismatch DUT vs REF: DUT=0x0081 REF=0x55e8
+# Mismatch DUT vs MATH: DUT=0x0081 MATH=0x55e8
+# Scores so far: vs REF=2, vs MATH=2, tests=18
 #  
 # what's feeding the case 1101011000001001
-# IN=0xd609,  DUT=0xd560, REF=0xd560, MATH=0xd560
-# Scores so far: vs REF=19, vs MATH=19, tests=19
+# IN=0xd609,  DUT=0x8009, REF=0xd560, MATH=0xd560
+# Mismatch DUT vs REF: DUT=0x8009 REF=0xd560
+# Mismatch DUT vs MATH: DUT=0x8009 MATH=0xd560
+# Scores so far: vs REF=2, vs MATH=2, tests=19
 #  
 # what's feeding the case 0101011001100011
-# IN=0x5663,  DUT=0x5566, REF=0x5566, MATH=0x5566
-# Scores so far: vs REF=20, vs MATH=20, tests=20
-# scores =          20          20 out of          20
-# ** Note: $stop    : new_fix2flt_tb.sv(92)
+# IN=0x5663,  DUT=0x0063, REF=0x5566, MATH=0x5566
+# Mismatch DUT vs REF: DUT=0x0063 REF=0x5566
+# Mismatch DUT vs MATH: DUT=0x0063 MATH=0x5566
+# Scores so far: vs REF=2, vs MATH=2, tests=20
+# scores =           2           2 out of          20
+# ** Note: $stop    : new_fix2flt_tb.sv(98)
 #    Time: 401025 ns  Iteration: 0  Instance: /new_int2flt_tb
-# Break in Module new_int2flt_tb at new_fix2flt_tb.sv line 92
-# Stopped at new_fix2flt_tb.sv line 92
+# Break in Module new_int2flt_tb at new_fix2flt_tb.sv line 98
+# Stopped at new_fix2flt_tb.sv line 98
 # exit
-# End time: 03:39:25 on Aug 02,2025, Elapsed time: 0:00:01
+# End time: 01:19:14 on Aug 04,2025, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
-End time: 03:39:25 on Aug 02,2025, Elapsed time: 0:00:02
+End time: 01:19:14 on Aug 04,2025, Elapsed time: 0:00:02
 *** Summary *********************************************
     qrun: Errors:   0, Warnings:   0
     vlog: Errors:   0, Warnings:   0

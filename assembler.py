@@ -1,171 +1,56 @@
-import sys
-from bitstring import Bits
+#!/usr/bin/env python3
+"""
+Very small two-pass assembler for the adapted 9-bit CSE141L ISA.
+Reads `new_fix2flt.asm` and writes `instrom_init.txt`
+(one 9-bit binary word per line, max 64 lines).
+"""
 
-opcode = {
-    'take': 0,
-    'put': 1,
-    'load': 2,
-    'store': 3,
-    'xor': 4,
-    'nand': 5,
-    'shl': 6,
-    'shr': 7,
-    'lookup': 8,
-    'lsn': 9,
-    'eql': 10,
-    'add': 11,
-    'sub': 12,
-    'of0': 13,
-    'halt': 14,
-    'tba': 15
+import sys, re
+
+OPC = {
+    'ADD': '000', 'SUB': '001', 'AND': '010',
+    'LDI': '011', 'LDR': '100', 'STR': '101',
+    'BRZ': '110', 'JMP': '111', 'HALT': '111'
 }
 
-registers = {
-    'r0': 0, 'r1': 1, 'r2': 2, 'r3': 3,
-    'r4': 4, 'r5': 5, 'r6': 6, 'r7': 7,
-    'r8': 8, 'r9': 9, 'r10': 10, 'r11': 11,
-    'r12': 12, 'r13': 13, 'r14': 14, 'r15': 15
-}
+REG = {f'R{i}': f'{i:03b}' for i in range(8)}
 
-LookUp = {
-    '0': 0, '1': 1, '2': 2, '3': 3, '4': 4,
-    '5': 5, '6': 6, '7': 7, '8': 8, '9': 9,
-    '10': 10, '11': 11, '12': 12, '13': 13, '14': 14, '15': 15
-}
+def parse(src):
+    code, labels = [], {}
+    for line in src:
+        line = line.split(';')[0].strip()
+        if not line:
+            continue
+        if line.endswith(':'):          # label only line
+            labels[line[:-1]] = len(code)
+        else:
+            code.append(line)
+    return code, labels
 
-label_table = {}
+def encode(instr, pc, labels):
+    toks = instr.replace(',', ' ').split()
+    mnem = toks[0].upper()
+    if mnem == 'HALT':
+        return '111000000'
+    if mnem in ('ADD', 'SUB', 'AND', 'LDR', 'STR'):
+        rd, rs = REG[toks[1]], REG[toks[2]]
+        return OPC[mnem] + rd + rs
+    if mnem == 'LDI':
+        rd = REG[toks[1]]
+        imm = int(toks[2]) & 0b111
+        return OPC[mnem] + rd + f'{imm:03b}'
+    if mnem in ('BRZ', 'JMP'):
+        addr = labels[toks[1]] if not toks[1].isdigit() else int(toks[1])
+        return OPC[mnem] + f'{addr:06b}'
+    raise ValueError(f"Unknown instruction at pc {pc}: {instr}")
 
-if __name__ == "__main__":
-    args = sys.argv
-    if len(args) != 3:
-        print("invalid input, correct format: \n\tpython assembler.py <assembly file> <machine_code file>")
-        sys.exit(0)
+def main():
+    asm_in = open('new_fix2flt.asm')
+    code, labels = parse(asm_in)
+    out = [encode(c, pc, labels) for pc, c in enumerate(code)]
+    with open('instrom_init.txt', 'w') as f:
+        f.write('\n'.join(out))
+    print(f"Wrote {len(out)} words to instrom_init.txt")
 
-    print("Assembler Launching...")
-
-    # First pass: record label positions
-    with open(args[1], 'r') as inFile:
-        lineCount = 1
-        effective_lineCount = 0
-        label = ''
-        stored_label = ''
-        for line in inFile:
-            print(f"Assembling line {lineCount}: {line.strip()}")
-            line = line.split('#', 1)[0].strip()  # Remove comments and trailing whitespace
-            if ':' in line:
-                label = line.split(':', 1)[0].strip()
-                instr = line.split(':', 1)[1].strip() if len(line.split(':', 1)) > 1 else ''
-            else:
-                label = ''
-                instr = line
-
-            if label:
-                stored_label = label
-
-            words = instr.split()
-            print(f"Line {lineCount}: words = {words}")  # Debug output
-
-            if len(words) == 0:
-                pass
-            elif len(words) == 1:
-                if words[0] not in ['halt', 'tba', 'of0']:
-                    print(f"invalid instruction format at line {lineCount}: expected 'halt', 'tba', or 'of0'")
-                    sys.exit(0)
-                effective_lineCount += 1
-                if label:
-                    label_table[label] = effective_lineCount
-                    stored_label = ''
-                elif stored_label:
-                    label_table[stored_label] = effective_lineCount
-                    stored_label = ''
-            elif len(words) == 2:
-                if words[0] not in ['b0', 'take', 'put', 'load', 'store', 'xor', 'nand', 'shl', 'shr', 'lookup', 'lsn', 'eql', 'add', 'sub']:
-                    print(f"invalid instruction format at line {lineCount}: unknown instruction '{words[0]}'")
-                    sys.exit(0)
-                if words[0] == 'lookup':
-                    if words[1] not in LookUp:
-                        print(f"invalid instruction format at line {lineCount}: lookup expects 0-15, got '{words[1]}'")
-                        sys.exit(0)
-                    effective_lineCount += 1
-                    if label:
-                        label_table[label] = effective_lineCount
-                        stored_label = ''
-                    elif stored_label:
-                        label_table[stored_label] = effective_lineCount
-                        stored_label = ''
-                elif words[0] == 'b0':
-                    effective_lineCount += 1
-                    if label:
-                        label_table[label] = effective_lineCount
-                        stored_label = ''
-                    elif stored_label:
-                        label_table[stored_label] = effective_lineCount
-                        stored_label = ''
-                else:
-                    if words[1] not in registers:
-                        print(f"invalid instruction format at line {lineCount}: expected register r0-r15, got '{words[1]}'")
-                        sys.exit(0)
-                    effective_lineCount += 1
-                    if label:
-                        label_table[label] = effective_lineCount
-                        stored_label = ''
-                    elif stored_label:
-                        label_table[stored_label] = effective_lineCount
-                        stored_label = ''
-            else:
-                print(f"invalid instruction format at line {lineCount}: too many arguments")
-                sys.exit(0)
-            lineCount += 1
-        print(f"Label table: {label_table}")
-
-    # Second pass: generate machine code
-    with open(args[1], 'r') as theInputFile, open(args[2], 'w') as theOutputFile:
-        lineCount = 1
-        effective_lineCount = 0
-        for line in theInputFile:
-            print(f"Assembling line {lineCount}: {line.strip()}")
-            line = line.split('#', 1)[0].strip()
-            if ':' in line:
-                instr = line.split(':', 1)[1].strip() if len(line.split(':', 1)) > 1 else ''
-            else:
-                instr = line
-
-            words = instr.split()
-            print(f"Line {lineCount}: words = {words}")  # Debug output
-
-            if len(words) == 0:
-                pass
-            elif len(words) == 1:
-                effective_lineCount += 1
-                op = opcode[words[0]]
-                theOutputFile.write(f"0_{format(op, 'b').zfill(4)}_{format(0, 'b').zfill(4)} // {' '.join(words)}\n")
-            elif len(words) == 2:
-                if words[0] == 'lookup':
-                    effective_lineCount += 1
-                    op = opcode[words[0]]
-                    reg = LookUp[words[1]]
-                    theOutputFile.write(f"0_{format(op, 'b').zfill(4)}_{format(reg, 'b').zfill(4)} // {' '.join(words)}\n")
-                elif words[0] == 'b0':
-                    effective_lineCount += 1
-                    if words[1] not in label_table:
-                        print(f"Label not exist at line {lineCount}: '{words[1]}'")
-                        sys.exit(0)
-                    offset = label_table[words[1]] - effective_lineCount
-                    if offset < -128 or offset > 127:
-                        print(f"Branch offset out of range at line {lineCount}: offset = {offset}")
-                        sys.exit(0)
-                    theOutputFile.write(f"1_{(Bits(int=offset, length=8).bin)} // {' '.join(words)}\n")
-                else:
-                    effective_lineCount += 1
-                    if words[1] not in registers:
-                        print(f"invalid instruction format at line {lineCount}: expected register r0-r15, got '{words[1]}'")
-                        sys.exit(0)
-                    op = opcode[words[0]]
-                    reg = registers[words[1]]
-                    theOutputFile.write(f"0_{format(op, 'b').zfill(4)}_{format(reg, 'b').zfill(4)} // {' '.join(words)}\n")
-            else:
-                print(f"invalid instruction format at line {lineCount}: too many arguments")
-                sys.exit(0)
-            lineCount += 1
-
-    print("\nAssembler successfully terminated")
+if __name__ == '__main__':
+    main()

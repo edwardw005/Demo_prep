@@ -1,19 +1,24 @@
-module data_mem #(parameter AW=8)(
-  input clk,
-  input [AW-1:0] DataAddress,
-  input ReadMem,
-  input WriteMem,
-  input [7:0] DataIn,
+module data_mem (
+  input  logic clk,
+  input  logic ReadMem,
+  input  logic WriteMem,
+  input  logic [7:0] DataAddress,
+  input  logic [7:0] DataIn,
   output logic [7:0] DataOut
 );
-  logic [7:0] mem_core [2**AW];
-  always_comb
-    if(ReadMem) begin
-      DataOut = mem_core[DataAddress];
-    end else
-      DataOut = 16'bZ;
-  always_ff @(posedge clk)
-    if(WriteMem) begin
+  logic [7:0] mem_core [0:255];
+
+  always_ff @(posedge clk) begin
+    if (WriteMem)
       mem_core[DataAddress] <= DataIn;
-    end
+//      $display("WRITE mem[%0d] = %h", DataAddress, DataIn);
+  end
+
+  always_comb begin
+    if (ReadMem)
+      DataOut = mem_core[DataAddress];
+//      $display("Read mem[%0d] = %h", DataAddress, mem_core[DataAddress]);
+    else
+      DataOut = 8'b0;
+  end
 endmodule

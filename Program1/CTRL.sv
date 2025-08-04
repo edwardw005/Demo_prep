@@ -1,63 +1,40 @@
 module CTRL (
-  input [8:0] instruction,
-  output logic [2:0] alu_op,
-  output logic reg_write, mem_read, mem_write, branch, branch_conditional
+  input  logic [8:0] instruction,
+  output logic reg_write,
+  output logic mem_read,
+  output logic mem_write,
+  output logic branch_zero,
+  output logic branch_always,
+  output logic halt
 );
+  logic [2:0] opcode;
+  assign opcode = instruction[8:6];
+
   always_comb begin
-    // Extract opcode
-    logic [2:0] opcode;
-    opcode = instruction[8:6];
-    
-    // Initialize outputs
-    alu_op = 3'b000;
-    reg_write = 0;
-    mem_read = 0;
-    mem_write = 0;
-    branch = 0;
-    branch_conditional = 0;
-    
-    // Decode opcode
+    reg_write    = 0;
+    mem_read     = 0;
+    mem_write    = 0;
+    branch_zero  = 0;
+    branch_always = 0;
+    halt         = 0;
     case (opcode)
-      3'b000: begin // ADD
-        alu_op = 3'b000;
+      3'b000: reg_write = 1;           // ADD
+      3'b001: reg_write = 1;           // SUB
+      3'b010: reg_write = 1;           // AND
+      3'b011: reg_write = 1;           // LDI
+      3'b100: begin                    // LDR
         reg_write = 1;
+        mem_read  = 1;
       end
-      3'b001: begin // SUB
-        alu_op = 3'b001;
-        reg_write = 1;
+      3'b101: mem_write = 1;           // STR
+      3'b110: branch_zero = 1;         // BRZ
+      3'b111: begin                    // JMP/HALT
+        if (instruction[5:0] == 6'b000000)
+          halt = 1;
+        else
+          branch_always = 1;
       end
-      3'b010: begin // AND
-        alu_op = 3'b010;
-        reg_write = 1;
-      end
-      3'b011: begin // XOR
-        alu_op = 3'b011;
-        reg_write = 1;
-      end
-      3'b100: begin // LDR
-        mem_read = 1;
-        reg_write = 1;
-      end
-      3'b101: begin // STR
-        mem_write = 1;
-      end
-      3'b110: begin // BR
-        branch = 1;
-      end
-      3'b111: begin // BRZ
-        branch = 1;
-        branch_conditional = 1;
-      end
-      default: begin
-        alu_op = 3'b000;
-        reg_write = 0;
-        mem_read = 0;
-        mem_write = 0;
-        branch = 0;
-        branch_conditional = 0;
-      end
+      default: ;
     endcase
-    
-//    $display("Instruction = %b, Opcode = %b", instruction, opcode);
   end
 endmodule

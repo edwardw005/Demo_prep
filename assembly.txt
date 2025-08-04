@@ -1,0 +1,65 @@
+; new_fix2flt.asm  -- fixed(8.8) -> float(1-5-10)
+
+            LDI   R4,1        ; CONST_1
+            LDI   R0,0        ; addr0
+            LDR   R1,R0       ; low byte
+            LDI   R0,1
+            LDR   R5,R0       ; high byte
+            LDI   R3,1
+ADD7:       ADD   R3,R3       ; build 0x80
+            LDI   R0,7
+            SUB   R0,R4
+            BRZ   MSK_DONE
+            JMP   ADD7
+MSK_DONE:   AND   R6,R3       ; sign bit in R6 (R6 initially R5)
+            ADD   R6,R5
+
+            ADD   R0,R5       ; R0=high
+            ADD   R0,R1       ; R0=high+low
+            BRZ   ZERO
+
+            ; exponent = 21
+            LDI   R2,5
+            ADD   R2,R2
+            ADD   R2,R2       ; *4 =>20
+            ADD   R2,R4       ; +1 =>21
+
+CLR_SIGN:   AND   R5,R3       ; clear sign bit by AND with NOT mask (prep via trick)
+            ; loop: while !(R5 & 0x40)
+SHIFT_TST:  LDI   R0,1
+            ADD   R0,R0
+            ADD   R0,R0
+            ADD   R0,R0
+            ADD   R0,R0
+            ADD   R0,R0       ; R0=0x40
+            AND   R0,R5
+            BRZ   SHIFT_DONE
+            ; left shift (high,low)
+            ADD   R5,R5
+            ADD   R7,R7
+            ; propagate carry from low to high if needed
+            AND   R0,R7
+            BRZ   SKIP_C
+            ADD   R5,R4
+SKIP_C:     SUB   R2,R4       ; exponent--
+            JMP   SHIFT_TST
+SHIFT_DONE:
+            ; top 2 mant bits
+            ADD   R0,R5
+            ADD   R0,R0
+            ; R6 already has sign<<7, add exponent<<2
+            ADD   R6,R2
+            ADD   R6,R0
+
+            ; store
+            LDI   R0,2
+            STR   R2,R0
+            LDI   R0,3
+            STR   R6,R0
+            JMP   HALT_L
+
+ZERO:       LDI   R0,2
+            STR   R1,R0
+            LDI   R0,3
+            STR   R5,R0
+HALT_L:     HALT

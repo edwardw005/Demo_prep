@@ -36,6 +36,12 @@ module new_int2flt_tb();
 	.reset(reset),			 //  
     .done (ack0));           
 
+  integer cycle;
+  initial cycle = 0;
+  always @(posedge clk) cycle = cycle + 1;
+
+
+
   always begin               // clock 
     #5ns clk = '1;			 
 	#5ns clk = '0;
@@ -122,7 +128,7 @@ task automatic disp2(input logic [15:0] int_in);
 	#10ns;
 	reset = 0;
 
-	f1.data_mem1.mem_core[1] = int_in[15:8];   // load operands into your memory
+  	f1.data_mem1.mem_core[1] = int_in[15:8];   // load operands into your memory
 	f1.data_mem1.mem_core[0] = int_in[ 7:0];
 	f0.data_mem0.mem_core[1] = int_in[15:8];   // load operands into my memory
 	f0.data_mem0.mem_core[0] = int_in[ 7:0];
@@ -132,7 +138,7 @@ task automatic disp2(input logic [15:0] int_in);
 	wait(ack);
 	wait(ack0);
 	#10ns;
-  	flt_out  = {f1.data_mem1.mem_core[3],f1.data_mem1.mem_core[2]};	 // results from your memory
+  flt_out  = {f1.data_mem1.mem_core[3],f1.data_mem1.mem_core[2]};	 // results from your memory
     flt_out0 = {f0.data_mem0.mem_core[3],f0.data_mem0.mem_core[2]};	 // results from my dummy DUT
     $display("what's feeding the case %b",int_in);
 	flt_outM = float_M;

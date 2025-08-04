@@ -106,7 +106,7 @@ module TopLevel (
 
   always @(posedge clk) begin
     if (!reset) begin
-//      $display("Cycle %0d: PC = %h, Instruction = %b, R0 = %h, R1 = %h, R2 = %h, R3 = %h, R4 = %h, R5 = %h, Zero = %b, Mem[4] = %h, Mem[5] = %h, Mem[6] = %h, Mem[7] = %h",
+      $display("Cycle %0d: PC = %h, Instruction = %b, R0 = %h, R1 = %h, R2 = %h, R3 = %h, R4 = %h, R5 = %h, Zero = %b, Mem[4] = %h, Mem[5] = %h, Mem[6] = %h, Mem[7] = %h",
                cycle_ctr, PC, instruction, reg_file.regs[0], reg_file.regs[1], reg_file.regs[2], reg_file.regs[3], reg_file.regs[4], reg_file.regs[5], zero,
                data_mem1.mem_core[4], data_mem1.mem_core[5], data_mem1.mem_core[6], data_mem1.mem_core[7]);
     end

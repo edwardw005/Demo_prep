@@ -1,9 +1,9 @@
 QuestaSim-64 qrun 2024.3_1 Utility 2024.10 Oct 17 2024
-Start time: 03:46:16 on Aug 02,2025
+Start time: 01:25:52 on Aug 04,2025
 qrun -batch -access=rw+/. -timescale 1ns/1ns -mfcu design.sv testbench.sv -voptargs="+acc=npr" -do " run -all; exit" 
 Creating library 'qrun.out/work'.
 QuestaSim-64 vlog 2024.3_1 Compiler 2024.10 Oct 17 2024
-Start time: 03:46:16 on Aug 02,2025
+Start time: 01:25:52 on Aug 04,2025
 vlog -timescale 1ns/1ns -mfcu design.sv testbench.sv -work qrun.out/work -statslog qrun.out/stats_log -writesessionid "+qrun.out/top_dus" -csession=incr 
 -- Compiling module data_mem
 -- Compiling module TopLevel
@@ -17,56 +17,44 @@ vlog -timescale 1ns/1ns -mfcu design.sv testbench.sv -work qrun.out/work -statsl
 -- Compiling module fltflt_tb
 
 Top level modules:
-	ALU
-	CTRL
-	InstROM
-	LUT
-	ProgCtrl
-	RegFile
 	fltflt_tb
-End time: 03:46:16 on Aug 02,2025, Elapsed time: 0:00:00
+End time: 01:25:52 on Aug 04,2025, Elapsed time: 0:00:00
 Errors: 0, Warnings: 0
 QuestaSim-64 vopt 2024.3_1 Compiler 2024.10 Oct 17 2024
 ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
-Start time: 03:46:17 on Aug 02,2025
+Start time: 01:25:52 on Aug 04,2025
 vopt -access=rw+/. -timescale 1ns/1ns -mfcu "+acc=npr" -findtoplevels qrun.out/work+1+ -work qrun.out/work -statslog qrun.out/stats_log -csession=incr -o qrun_opt -csessionid=2 
 
 Top level modules:
-	ALU
-	CTRL
-	InstROM
-	LUT
-	ProgCtrl
-	RegFile
 	fltflt_tb
 
 Analyzing design...
--- Loading module ALU
--- Loading module CTRL
--- Loading module InstROM
--- Loading module LUT
--- Loading module ProgCtrl
--- Loading module RegFile
 -- Loading module fltflt_tb
 -- Loading module TopLevel0
 -- Loading module data_mem
 -- Loading module TopLevel
+-- Loading module ProgCtrl
+-- Loading module InstROM
+-- Loading module CTRL
+-- Loading module RegFile
+-- Loading module ALU
+-- Loading module LUT
 Optimizing 10 design-units (inlining 0/11 module instances):
 -- Optimizing module fltflt_tb(fast)
--- Optimizing module InstROM(fast)
--- Optimizing module TopLevel0(fast)
 -- Optimizing module TopLevel(fast)
+-- Optimizing module TopLevel0(fast)
 -- Optimizing module CTRL(fast)
 -- Optimizing module RegFile(fast)
 -- Optimizing module data_mem(fast)
 -- Optimizing module LUT(fast)
 -- Optimizing module ALU(fast)
 -- Optimizing module ProgCtrl(fast)
+-- Optimizing module InstROM(fast)
 Optimized design name is qrun_opt
-End time: 03:46:17 on Aug 02,2025, Elapsed time: 0:00:00
+End time: 01:25:53 on Aug 04,2025, Elapsed time: 0:00:01
 Errors: 0, Warnings: 1
 # vsim -batch -lib qrun.out/work -do " run -all; exit" -statslog qrun.out/stats_log qrun_opt -appendlog -l qrun.log 
-# Start time: 03:46:17 on Aug 02,2025
+# Start time: 01:25:53 on Aug 04,2025
 # //  Questa Sim-64
 # //  Version 2024.3_1 linux_x86_64 Oct 17 2024
 # //
@@ -82,135 +70,293 @@ Errors: 0, Warnings: 1
 # // and may not be used in any way not expressly authorized by SISW.
 # //
 # Loading sv_std.std
-# Loading work.ALU(fast)
-# Loading work.CTRL(fast)
-# Loading work.InstROM(fast)
-# Loading work.LUT(fast)
-# Loading work.ProgCtrl(fast)
-# Loading work.RegFile(fast)
 # Loading work.fltflt_tb(fast)
 # Loading work.TopLevel0(fast)
 # Loading work.data_mem(fast)
 # Loading work.TopLevel(fast)
+# Loading work.ProgCtrl(fast)
+# Loading work.InstROM(fast)
+# Loading work.CTRL(fast)
+# Loading work.RegFile(fast)
+# Loading work.ALU(fast)
+# Loading work.LUT(fast)
 # 
 # run -all
+# Cycle 0: PC = 00, Instruction = 100001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1a
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1a
+# Cycle 2: PC = 02, Instruction = 100001001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1a
 # diff =  0
-# diff =  0
+# Cycle 3: PC = 00, Instruction = 100001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1a
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1a
+# Cycle 5: PC = 02, Instruction = 100001001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1a
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1a
+# Cycle 7: PC = 04, Instruction = 100001010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1a
+# Cycle 8: PC = 05, Instruction = 000011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1a
+# Cycle 9: PC = 06, Instruction = 100001011, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1a
+# Cycle 10: PC = 07, Instruction = 000100000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1a
+# Cycle 11: PC = 08, Instruction = 011000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1a
+# Cycle 12: PC = 09, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1a
 # flt1b = 0  00110  1000000100
 # flt2b = 0  00110  1000000100
-# flt3b =  0  00111  1000000100
+# flt3b =  x  xxxxx  xxxxxxxxxx
 # flt3_testb =  00111   1000000100
-# scores =           1,           1 out of           1
-# clock cycle ct =           3
+# scores =           0,           0 out of           1
+# clock cycle ct =          13
+# Cycle 13: PC = 0a, Instruction = 011000011, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1a
 #  
+# Cycle 0: PC = 00, Instruction = 100001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 42, Mem[10] = 04, Mem[11] = 42
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 42, Mem[10] = 04, Mem[11] = 42
+# Cycle 2: PC = 02, Instruction = 100001001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 42, Mem[10] = 04, Mem[11] = 42
 # diff =  0
-# diff =  0
+# Cycle 3: PC = 00, Instruction = 100001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 42, Mem[10] = 04, Mem[11] = 42
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 42, Mem[10] = 04, Mem[11] = 42
+# Cycle 5: PC = 02, Instruction = 100001001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 42, Mem[10] = 04, Mem[11] = 42
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 42, Mem[10] = 04, Mem[11] = 42
+# Cycle 7: PC = 04, Instruction = 100001010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 42, Mem[10] = 04, Mem[11] = 42
+# Cycle 8: PC = 05, Instruction = 000011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 42, Mem[10] = 04, Mem[11] = 42
+# Cycle 9: PC = 06, Instruction = 100001011, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 42, Mem[10] = 04, Mem[11] = 42
+# Cycle 10: PC = 07, Instruction = 000100000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 42, Mem[10] = 04, Mem[11] = 42
+# Cycle 11: PC = 08, Instruction = 011000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 42, Mem[10] = 04, Mem[11] = 42
+# Cycle 12: PC = 09, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 42, Mem[10] = 04, Mem[11] = 42
 # flt1b = 0  10000  1000000100
 # flt2b = 0  10000  1000000100
-# flt3b =  0  10001  1000000100
+# flt3b =  x  xxxxx  xxxxxxxxxx
 # flt3_testb =  10001   1000000100
-# scores =           2,           2 out of           2
-# clock cycle ct =           2
+# scores =           0,           0 out of           2
+# clock cycle ct =          12
+# Cycle 13: PC = 0a, Instruction = 011000011, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 42, Mem[10] = 04, Mem[11] = 42
 #  
+# Cycle 0: PC = 00, Instruction = 100001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 10, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 42
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 10, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 42
+# Cycle 2: PC = 02, Instruction = 100001001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 10, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 42
 # diff =  2
-# diff =  2
+# Cycle 3: PC = 00, Instruction = 100001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 10, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 42
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 10, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 42
+# Cycle 5: PC = 02, Instruction = 100001001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 10, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 42
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 10, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 42
+# Cycle 7: PC = 04, Instruction = 100001010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 10, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 42
+# Cycle 8: PC = 05, Instruction = 000011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 10, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 42
+# Cycle 9: PC = 06, Instruction = 100001011, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 10, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 42
+# Cycle 10: PC = 07, Instruction = 000100000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 10, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 42
+# Cycle 11: PC = 08, Instruction = 011000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 10, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 42
+# Cycle 12: PC = 09, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 10, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 42
 # flt1b = 0  10010  1000010000
 # flt2b = 0  10000  1000000100
-# flt3b =  0  10010  1110010001
+# flt3b =  x  xxxxx  xxxxxxxxxx
 # flt3_testb =  10010   1110010001
-# scores =           3,           3 out of           3
-# clock cycle ct =           2
+# scores =           0,           0 out of           3
+# clock cycle ct =          12
+# Cycle 13: PC = 0a, Instruction = 011000011, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 10, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 42
 #  
+# Cycle 0: PC = 00, Instruction = 100001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 0f, Mem[9] = 52, Mem[10] = 40, Mem[11] = 00
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 0f, Mem[9] = 52, Mem[10] = 40, Mem[11] = 00
+# Cycle 2: PC = 02, Instruction = 100001001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 0f, Mem[9] = 52, Mem[10] = 40, Mem[11] = 00
 # diff = 20
-# diff = 20
+# Cycle 3: PC = 00, Instruction = 100001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 0f, Mem[9] = 52, Mem[10] = 40, Mem[11] = 00
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 0f, Mem[9] = 52, Mem[10] = 40, Mem[11] = 00
+# Cycle 5: PC = 02, Instruction = 100001001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 0f, Mem[9] = 52, Mem[10] = 40, Mem[11] = 00
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 0f, Mem[9] = 52, Mem[10] = 40, Mem[11] = 00
+# Cycle 7: PC = 04, Instruction = 100001010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 0f, Mem[9] = 52, Mem[10] = 40, Mem[11] = 00
+# Cycle 8: PC = 05, Instruction = 000011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 0f, Mem[9] = 52, Mem[10] = 40, Mem[11] = 00
+# Cycle 9: PC = 06, Instruction = 100001011, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 0f, Mem[9] = 52, Mem[10] = 40, Mem[11] = 00
+# Cycle 10: PC = 07, Instruction = 000100000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 0f, Mem[9] = 52, Mem[10] = 40, Mem[11] = 00
+# Cycle 11: PC = 08, Instruction = 011000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 0f, Mem[9] = 52, Mem[10] = 40, Mem[11] = 00
+# Cycle 12: PC = 09, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 0f, Mem[9] = 52, Mem[10] = 40, Mem[11] = 00
 # flt1b = 0  10100  1000001111
 # flt2b = 0  00000  0001000000
-# flt3b =  0  10100  1000001111
+# flt3b =  x  xxxxx  xxxxxxxxxx
 # flt3_testb =  10100   1000001111
-# scores =           4,           4 out of           4
-# clock cycle ct =           2
+# scores =           0,           0 out of           4
+# clock cycle ct =          12
+# Cycle 13: PC = 0a, Instruction = 011000011, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 0f, Mem[9] = 52, Mem[10] = 40, Mem[11] = 00
 #  
+# Cycle 0: PC = 00, Instruction = 100001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1e
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1e
+# Cycle 2: PC = 02, Instruction = 100001001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1e
 # diff = 63
-# diff = 63
+# Cycle 3: PC = 00, Instruction = 100001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1e
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1e
+# Cycle 5: PC = 02, Instruction = 100001001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1e
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1e
+# Cycle 7: PC = 04, Instruction = 100001010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1e
+# Cycle 8: PC = 05, Instruction = 000011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1e
+# Cycle 9: PC = 06, Instruction = 100001011, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1e
+# Cycle 10: PC = 07, Instruction = 000100000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1e
+# Cycle 11: PC = 08, Instruction = 011000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1e
+# Cycle 12: PC = 09, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1e
 # flt1b = 0  00110  1000000100
 # flt2b = 0  00111  1000000100
-# flt3b =  0  01000  0010000011
+# flt3b =  x  xxxxx  xxxxxxxxxx
 # flt3_testb =  01000   0010000011
-# scores =           5,           5 out of           5
-# clock cycle ct =           2
+# scores =           0,           0 out of           5
+# clock cycle ct =          12
+# Cycle 13: PC = 0a, Instruction = 011000011, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1e
 #  
+# Cycle 0: PC = 00, Instruction = 100001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 42, Mem[10] = 04, Mem[11] = 56
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 42, Mem[10] = 04, Mem[11] = 56
+# Cycle 2: PC = 02, Instruction = 100001001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 42, Mem[10] = 04, Mem[11] = 56
 # diff = 59
-# diff = 59
+# Cycle 3: PC = 00, Instruction = 100001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 42, Mem[10] = 04, Mem[11] = 56
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 42, Mem[10] = 04, Mem[11] = 56
+# Cycle 5: PC = 02, Instruction = 100001001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 42, Mem[10] = 04, Mem[11] = 56
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 42, Mem[10] = 04, Mem[11] = 56
+# Cycle 7: PC = 04, Instruction = 100001010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 42, Mem[10] = 04, Mem[11] = 56
+# Cycle 8: PC = 05, Instruction = 000011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 42, Mem[10] = 04, Mem[11] = 56
+# Cycle 9: PC = 06, Instruction = 100001011, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 42, Mem[10] = 04, Mem[11] = 56
+# Cycle 10: PC = 07, Instruction = 000100000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 42, Mem[10] = 04, Mem[11] = 56
+# Cycle 11: PC = 08, Instruction = 011000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 42, Mem[10] = 04, Mem[11] = 56
+# Cycle 12: PC = 09, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 42, Mem[10] = 04, Mem[11] = 56
 # flt1b = 0  10000  1000000000
 # flt2b = 0  10101  1000000100
-# flt3b =  0  10101  1000110100
+# flt3b =  x  xxxxx  xxxxxxxxxx
 # flt3_testb =  10101   1000110100
-# scores =           6,           6 out of           6
-# clock cycle ct =           2
+# scores =           0,           0 out of           6
+# clock cycle ct =          12
+# Cycle 13: PC = 0a, Instruction = 011000011, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 42, Mem[10] = 04, Mem[11] = 56
 #  
+# Cycle 0: PC = 00, Instruction = 100001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 5e
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 5e
+# Cycle 2: PC = 02, Instruction = 100001001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 5e
 # diff = 59
-# diff = 59
+# Cycle 3: PC = 00, Instruction = 100001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 5e
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 5e
+# Cycle 5: PC = 02, Instruction = 100001001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 5e
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 5e
+# Cycle 7: PC = 04, Instruction = 100001010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 5e
+# Cycle 8: PC = 05, Instruction = 000011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 5e
+# Cycle 9: PC = 06, Instruction = 100001011, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 5e
+# Cycle 10: PC = 07, Instruction = 000100000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 5e
+# Cycle 11: PC = 08, Instruction = 011000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 5e
+# Cycle 12: PC = 09, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 5e
 # flt1b = 0  10010  1000000000
 # flt2b = 0  10111  1000000100
-# flt3b =  0  10111  1000110100
+# flt3b =  x  xxxxx  xxxxxxxxxx
 # flt3_testb =  10111   1000110100
-# scores =           7,           7 out of           7
-# clock cycle ct =           2
+# scores =           0,           0 out of           7
+# clock cycle ct =          12
+# Cycle 13: PC = 0a, Instruction = 011000011, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 5e
 #  
+# Cycle 0: PC = 00, Instruction = 100001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 52, Mem[10] = 04, Mem[11] = 02
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 52, Mem[10] = 04, Mem[11] = 02
+# Cycle 2: PC = 02, Instruction = 100001001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 52, Mem[10] = 04, Mem[11] = 02
 # diff = 20
-# diff = 20
+# Cycle 3: PC = 00, Instruction = 100001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 52, Mem[10] = 04, Mem[11] = 02
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 52, Mem[10] = 04, Mem[11] = 02
+# Cycle 5: PC = 02, Instruction = 100001001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 52, Mem[10] = 04, Mem[11] = 02
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 52, Mem[10] = 04, Mem[11] = 02
+# Cycle 7: PC = 04, Instruction = 100001010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 52, Mem[10] = 04, Mem[11] = 02
+# Cycle 8: PC = 05, Instruction = 000011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 52, Mem[10] = 04, Mem[11] = 02
+# Cycle 9: PC = 06, Instruction = 100001011, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 52, Mem[10] = 04, Mem[11] = 02
+# Cycle 10: PC = 07, Instruction = 000100000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 52, Mem[10] = 04, Mem[11] = 02
+# Cycle 11: PC = 08, Instruction = 011000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 52, Mem[10] = 04, Mem[11] = 02
+# Cycle 12: PC = 09, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 52, Mem[10] = 04, Mem[11] = 02
 # flt1b = 0  10100  1000000000
 # flt2b = 0  00000  1000000100
-# flt3b =  0  10100  1000000000
+# flt3b =  x  xxxxx  xxxxxxxxxx
 # flt3_testb =  10100   1000000000
-# scores =           8,           8 out of           8
-# clock cycle ct =           2
+# scores =           0,           0 out of           8
+# clock cycle ct =          12
+# Cycle 13: PC = 0a, Instruction = 011000011, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 00, Mem[9] = 52, Mem[10] = 04, Mem[11] = 02
 #  
+# Cycle 0: PC = 00, Instruction = 100001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1a
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1a
+# Cycle 2: PC = 02, Instruction = 100001001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1a
 # diff =  0
-# diff =  0
+# Cycle 3: PC = 00, Instruction = 100001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1a
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1a
+# Cycle 5: PC = 02, Instruction = 100001001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1a
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1a
+# Cycle 7: PC = 04, Instruction = 100001010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1a
+# Cycle 8: PC = 05, Instruction = 000011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1a
+# Cycle 9: PC = 06, Instruction = 100001011, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1a
+# Cycle 10: PC = 07, Instruction = 000100000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1a
+# Cycle 11: PC = 08, Instruction = 011000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1a
+# Cycle 12: PC = 09, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1a
 # flt1b = 0  00110  1000000100
 # flt2b = 0  00110  1000000100
-# flt3b =  0  00111  1000000100
+# flt3b =  x  xxxxx  xxxxxxxxxx
 # flt3_testb =  00111   1000000100
-# scores =           9,           9 out of           9
-# clock cycle ct =           2
+# scores =           0,           0 out of           9
+# clock cycle ct =          12
+# Cycle 13: PC = 0a, Instruction = 011000011, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 1a, Mem[10] = 04, Mem[11] = 1a
 #  
+# Cycle 0: PC = 00, Instruction = 100001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 5a, Mem[10] = 04, Mem[11] = 5a
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 5a, Mem[10] = 04, Mem[11] = 5a
+# Cycle 2: PC = 02, Instruction = 100001001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 5a, Mem[10] = 04, Mem[11] = 5a
 # diff =  0
-# diff =  0
+# Cycle 3: PC = 00, Instruction = 100001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 5a, Mem[10] = 04, Mem[11] = 5a
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 5a, Mem[10] = 04, Mem[11] = 5a
+# Cycle 5: PC = 02, Instruction = 100001001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 5a, Mem[10] = 04, Mem[11] = 5a
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 5a, Mem[10] = 04, Mem[11] = 5a
+# Cycle 7: PC = 04, Instruction = 100001010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 5a, Mem[10] = 04, Mem[11] = 5a
+# Cycle 8: PC = 05, Instruction = 000011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 5a, Mem[10] = 04, Mem[11] = 5a
+# Cycle 9: PC = 06, Instruction = 100001011, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 5a, Mem[10] = 04, Mem[11] = 5a
+# Cycle 10: PC = 07, Instruction = 000100000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 5a, Mem[10] = 04, Mem[11] = 5a
+# Cycle 11: PC = 08, Instruction = 011000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 5a, Mem[10] = 04, Mem[11] = 5a
+# Cycle 12: PC = 09, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 5a, Mem[10] = 04, Mem[11] = 5a
 # flt1b = 0  10110  1000000100
 # flt2b = 0  10110  1000000100
-# flt3b =  0  10111  1000000100
+# flt3b =  x  xxxxx  xxxxxxxxxx
 # flt3_testb =  10111   1000000100
-# scores =          10,          10 out of          10
-# clock cycle ct =           2
+# scores =           0,           0 out of          10
+# clock cycle ct =          12
+# Cycle 13: PC = 0a, Instruction = 011000011, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 04, Mem[9] = 5a, Mem[10] = 04, Mem[11] = 5a
 #  
+# Cycle 0: PC = 00, Instruction = 100001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 10, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 42
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 10, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 42
+# Cycle 2: PC = 02, Instruction = 100001001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 10, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 42
 # diff =  2
-# diff =  2
+# Cycle 3: PC = 00, Instruction = 100001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 10, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 42
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 10, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 42
+# Cycle 5: PC = 02, Instruction = 100001001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 10, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 42
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 10, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 42
+# Cycle 7: PC = 04, Instruction = 100001010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 10, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 42
+# Cycle 8: PC = 05, Instruction = 000011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 10, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 42
+# Cycle 9: PC = 06, Instruction = 100001011, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 10, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 42
+# Cycle 10: PC = 07, Instruction = 000100000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 10, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 42
+# Cycle 11: PC = 08, Instruction = 011000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 10, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 42
+# Cycle 12: PC = 09, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 10, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 42
 # flt1b = 0  10010  1000010000
 # flt2b = 0  10000  1000000100
-# flt3b =  0  10010  1110010001
+# flt3b =  x  xxxxx  xxxxxxxxxx
 # flt3_testb =  10010   1110010001
-# scores =          11,          11 out of          11
-# clock cycle ct =           2
+# scores =           0,           0 out of          11
+# clock cycle ct =          12
+# Cycle 13: PC = 0a, Instruction = 011000011, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 10, Mem[9] = 4a, Mem[10] = 04, Mem[11] = 42
 #  
+# Cycle 0: PC = 00, Instruction = 100001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 0f, Mem[9] = 6a, Mem[10] = 00, Mem[11] = 52
+# Cycle 1: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 0f, Mem[9] = 6a, Mem[10] = 00, Mem[11] = 52
+# Cycle 2: PC = 02, Instruction = 100001001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 0f, Mem[9] = 6a, Mem[10] = 00, Mem[11] = 52
 # diff =  6
-# diff =  6
+# Cycle 3: PC = 00, Instruction = 100001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 0f, Mem[9] = 6a, Mem[10] = 00, Mem[11] = 52
+# Cycle 4: PC = 01, Instruction = 000001000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 0f, Mem[9] = 6a, Mem[10] = 00, Mem[11] = 52
+# Cycle 5: PC = 02, Instruction = 100001001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 0f, Mem[9] = 6a, Mem[10] = 00, Mem[11] = 52
+# Cycle 6: PC = 03, Instruction = 000010000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 0f, Mem[9] = 6a, Mem[10] = 00, Mem[11] = 52
+# Cycle 7: PC = 04, Instruction = 100001010, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 0f, Mem[9] = 6a, Mem[10] = 00, Mem[11] = 52
+# Cycle 8: PC = 05, Instruction = 000011000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 0f, Mem[9] = 6a, Mem[10] = 00, Mem[11] = 52
+# Cycle 9: PC = 06, Instruction = 100001011, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 0f, Mem[9] = 6a, Mem[10] = 00, Mem[11] = 52
+# Cycle 10: PC = 07, Instruction = 000100000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 0f, Mem[9] = 6a, Mem[10] = 00, Mem[11] = 52
+# Cycle 11: PC = 08, Instruction = 011000001, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 0f, Mem[9] = 6a, Mem[10] = 00, Mem[11] = 52
+# Cycle 12: PC = 09, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 0f, Mem[9] = 6a, Mem[10] = 00, Mem[11] = 52
 # flt1b = 0  11010  1000001111
 # flt2b = 0  10100  1000000000
-# flt3b =  0  11010  1000100111
+# flt3b =  x  xxxxx  xxxxxxxxxx
 # flt3_testb =  11010   1000100111
-# scores =          12,          12 out of          12
-# clock cycle ct =           2
+# scores =           0,           0 out of          12
+# clock cycle ct =          12
+# Cycle 13: PC = 0a, Instruction = 011000011, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 0f, Mem[9] = 6a, Mem[10] = 00, Mem[11] = 52
 #  
-# score1 =          12, score2 =          12, out of          12
+# Cycle 14: PC = 0b, Instruction = 111000000, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 0f, Mem[9] = 6a, Mem[10] = 00, Mem[11] = 52
+# Cycle 15: PC = 0c, Instruction = 010000111, R0 = 00, R1 = 00, R2 = 00, R3 = 00, R4 = 00, R5 = 00, R6 = 00, R7 = 00, Zero = 1, Mem[8] = 0f, Mem[9] = 6a, Mem[10] = 00, Mem[11] = 52
+# score1 =           0, score2 =           0, out of          12
 # ** Note: $stop    : fltflt_no_rnd_tb.sv(105)
-#    Time: 625 ns  Iteration: 0  Instance: /fltflt_tb
+#    Time: 1825 ns  Iteration: 0  Instance: /fltflt_tb
 # Break in Module fltflt_tb at fltflt_no_rnd_tb.sv line 105
 # Stopped at fltflt_no_rnd_tb.sv line 105
 # exit
-# End time: 03:46:18 on Aug 02,2025, Elapsed time: 0:00:01
+# End time: 01:25:54 on Aug 04,2025, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
-End time: 03:46:18 on Aug 02,2025, Elapsed time: 0:00:02
+End time: 01:25:54 on Aug 04,2025, Elapsed time: 0:00:02
 *** Summary *********************************************
     qrun: Errors:   0, Warnings:   0
     vlog: Errors:   0, Warnings:   0

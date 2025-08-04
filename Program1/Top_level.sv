@@ -1,122 +1,96 @@
 module TopLevel (
-  input clk, reset, start,
+  input  logic clk,
+  input  logic reset,
+  input  logic start,
   output logic done
 );
-  logic [6:0] PC, branch_target;
+  logic [6:0] PC;
   logic [8:0] instruction;
-  logic [2:0] alu_op, rd, rs, effective_rd, effective_rs;
-  logic reg_write, mem_read, mem_write, branch, branch_conditional, zero;
-  logic [7:0] alu_out, reg_out_rd, reg_out_rs, mem_out, reg_data_in;
-  logic start_q;
-  logic [11:0] cycle_ctr;
-  logic [6:0] prev_PC;
+  logic [2:0] opcode, rd, rs;
+  logic [5:0] imm6;
+  logic reg_write, mem_read, mem_write, branch_zero, branch_always, halt;
+  logic [7:0] reg_out_rd, reg_out_rs, alu_out, mem_out, reg_data_in;
+  logic zero;
+  logic imm_mode;
 
-  ProgCtrl prog_ctrl (
-    .clk, 
-    .reset(reset || (start_q && !start)),
-    .branch, 
-    .branch_conditional, 
-    .zero, 
-    .target(branch_target), 
-    .PC
-  );
-
-  InstROM inst_rom (
-    .InstAddress(PC), 
+  // Instruction Fetch
+  InstROM inst_rom(
+    .InstAddress(PC),
     .InstOut(instruction)
   );
 
-  always_comb begin
-    if (instruction[8:6] == 3'b100 || instruction[8:6] == 3'b101) begin
-      effective_rd = 3'b0;
-      effective_rs = 3'b0;
-    end else begin
-      effective_rd = instruction[5:3];
-      effective_rs = instruction[2:0];
-    end
-  end
+  // Decode fields
+  assign opcode = instruction[8:6];
+  assign rd     = instruction[5:3];
+  assign rs     = instruction[2:0];
+  assign imm6   = instruction[5:0];
+  assign imm_mode = (opcode == 3'b011); // LDI only
 
-  CTRL ctrl (
-    .instruction, 
-    .alu_op, 
-    .reg_write, 
-    .mem_read, 
-    .mem_write, 
-    .branch, 
-    .branch_conditional
+  // Control Unit
+  CTRL ctrl(
+    .instruction(instruction),
+    .reg_write(reg_write),
+    .mem_read(mem_read),
+    .mem_write(mem_write),
+    .branch_zero(branch_zero),
+    .branch_always(branch_always),
+    .halt(halt)
   );
 
-  RegFile reg_file (
-    .clk, 
-    .reg_write, 
-    .reset, 
-    .rd(effective_rd), 
-    .rs(effective_rs), 
-    .data_in(reg_data_in), 
-    .out_rd(reg_out_rd), 
+  // Register File
+  RegFile reg_file(
+    .clk(clk),
+    .reset(reset),
+    .reg_write(reg_write),
+    .rd(rd),
+    .rs(rs),
+    .data_in(reg_data_in),
+    .out_rd(reg_out_rd),
     .out_rs(reg_out_rs)
   );
 
-  ALU alu (
-    .in1(reg_out_rd), 
-    .in2(reg_out_rs), 
-    .op(alu_op), 
-    .out(alu_out), 
-    .zero
+  // ALU
+  ALU alu(
+    .in1(reg_out_rd),
+    .in2(reg_out_rs),
+    .op(opcode),
+    .imm6(imm6),
+    .imm_mode(imm_mode),
+    .out(alu_out),
+    .zero(zero)
   );
 
-  data_mem #(.AW(8)) data_mem1 (
-    .clk, 
-    .ReadMem(mem_read), 
-    .WriteMem(mem_write), 
-    .DataAddress(instruction[7:0]), 
-    .DataIn(reg_out_rd), 
+  // Data Memory
+  data_mem data_mem1(
+    .clk(clk),
+    .ReadMem(mem_read),
+    .WriteMem(mem_write),
+    .DataAddress(reg_out_rs),
+    .DataIn(reg_out_rd),
     .DataOut(mem_out)
   );
 
-  LUT lut (
-    .index(instruction[5:0]), 
-    .out(branch_target)
+  // Program Counter Control
+  ProgCtrl prog_ctrl (
+    .clk(clk),
+    .reset(reset),
+    .branch_zero(branch_zero),
+    .branch_always(branch_always),
+    .zero(zero),
+    .halt(halt),
+    .target(imm6),
+    .PC(PC)
   );
 
+  // Writeback logic
   assign reg_data_in = mem_read ? mem_out : alu_out;
 
-  // Initialize memory for exponent and counter
-  initial begin
-    data_mem1.mem_core[4] = 8'h15; // Exponent = 21
-    data_mem1.mem_core[5] = 8'h0F; // Counter = 15
-  end
-
+  // Set done flag when HALT fetched
   always_ff @(posedge clk) begin
-    if (reset) begin
-      start_q <= 1'b0;
-      cycle_ctr <= 12'b0;
-      done <= 1'b0;
-      prev_PC <= 7'b0;
-    end else begin
-      start_q <= start;
-      cycle_ctr <= cycle_ctr + 1;
-      prev_PC <= PC;
-      // Assert done only on BRZ 2 at PC 18 or 30, after memory writes
-      if ((instruction[8:6] == 3'b111 && instruction[5:0] == 6'b000010 && (PC == 7'h12 || PC == 7'h1E)) && !done) begin
-        done <= 1'b1;
-      end else begin
-        done <= 1'b0;
-      end
-      if (cycle_ctr == 12'd2000) begin
-//        $display("Timeout: Infinite loop detected at PC = %h, instruction = %b", PC, instruction);
-        $finish;
-      end
-    end
+    if (reset)
+      done <= 0;
+    else if (halt)
+      done <= 1;
   end
 
-  // Debugging output
-  always @(posedge clk) begin
-    if (!reset) begin
-//      $display("Cycle %0d: PC=%h, Instruction=%b, R0=%h, R1=%h, R2=%h, R3=%h, R4=%h, R5=%h, Zero=%b, ALU_out=%h, Branch=%b, Branch_conditional=%b, Target=%h, Mem[0]=%h, Mem[1]=%h, Mem[2]=%h, Mem[3]=%h, Done=%b, MemWrite=%b, DataIn=%h",
-               cycle_ctr, PC, instruction, reg_file.regs[0], reg_file.regs[1], reg_file.regs[2], reg_file.regs[3],
-               reg_file.regs[4], reg_file.regs[5], zero, alu_out, branch, branch_conditional, branch_target,
-               data_mem1.mem_core[0], data_mem1.mem_core[1], data_mem1.mem_core[2], data_mem1.mem_core[3], done, mem_write, reg_out_rd);
-    end
-  end
 endmodule

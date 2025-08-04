@@ -1,0 +1,70 @@
+; registers
+; R0 : general pointer / scratch          R4 : constant 1
+; R1 : low  byte of fixed input           R5 : high byte of fixed input
+; R2 : exponent counter (starts at 21)    R6 : working high byte of magnitude
+; R3 : sign mask / misc                   R7 : working low byte of magnitude
+
+START:
+    ;; ----------- load operand -----------
+    R0 <- 0              ; mem addr 0
+    R1 <- mem[R0]        ; low  byte
+    R0 <- 1
+    R5 <- mem[R0]        ; high byte
+
+    ;; ----------- copy sign --------------
+    R3 <- 1              ; build 0x80 mask
+    repeat 7 { R3 <- R3 + R3 }   ; R3 = 0x80
+    R6 <- R5 & R3        ; R6 now holds sign bit (0x80 or 0x00)
+
+    ;; ----------- zero test --------------
+    R0 <- R5             ; OR test without OR: check both bytes zero
+    R0 <- R0 + R1
+    if Z flag set jump ZERO_CASE
+
+    ;; ----------- preload exponent = 21 --
+    R2 <- 5              ; 5
+    R4 <- 1
+    repeat 2 { R2 <- R2 + R2 }   ; 5*4 = 20
+    R2 <- R2 + R4                ; 21
+
+    ;; ----------- make magnitude positive
+    R5 <- R5 & (~0x80)    ; clear sign (mask built via ADDs)
+
+SHIFT_LOOP:               ; while(high byte bit7 == 0)
+    R0 <- R5 & 0x40       ; mask bit6 (after clearing sign) to probe future bit7
+    if Z flag set jump SHIFT_DONE
+    ;; shift left 1 bit (high & low)
+    R5 <- R5 + R5
+    R7 <- R7 + R7
+    if carry from low add then R5 <- R5 + 1
+    R2 <- R2 - R4         ; exponent--
+    jump SHIFT_LOOP
+SHIFT_DONE:
+
+    ;; ----------- isolate mantissa 10 bits (bits 13:4) ----
+    ;; we already normalised so bit 7 of R5 is 1 (implied)
+    ;; need top 2 bits of mantissa in high byte,
+    ;; remaining 8 bits in low byte.
+    R0 <- R5              ; copy
+    repeat 2 { R0 <- R0 + R0 }   ; shift left 2 → keep bits 5:0 in bits 7:2
+    R6 <- R6 + R2         ; place exponent (<<2 implicit) and sign
+    R6 <- R6 + R0         ; add top mant bits
+    R2 <- R7              ; use R2 as low-byte result
+    ;; final 16-bit float is (high=R6, low=R2)
+
+    ;; ----------- store result -----------
+    R0 <- 2
+    mem[R0] <- R2         ; low
+    R0 <- 3
+    mem[R0] <- R6         ; high
+    jump HALT_LABEL
+
+ZERO_CASE:
+    ;; Just copy input into output
+    R0 <- 2
+    mem[R0] <- R1
+    R0 <- 3
+    mem[R0] <- R5
+
+HALT_LABEL:
+    HALT                  ; causes done flag

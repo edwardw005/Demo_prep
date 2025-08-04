@@ -5,7 +5,6 @@ module CTRL (
 );
   logic [2:0] opcode = instruction[8:6];
   always_comb begin
-    $display("Instruction = %b, Opcode = %b", instruction, opcode);
     alu_op = 3'b000;
     reg_write = 0;
     mem_read = 0;
